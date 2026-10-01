@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -euo pipefail
+if command -v ruff >/dev/null; then ruff check .; fi
+if [ -d tests ] && command -v pytest >/dev/null; then pytest -q; fi

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+staged=$(git diff --cached --name-only --diff-filter=ACM)
+[ -z "$staged" ] && exit 0
+bad=$(echo "$staged" | grep -E "\.(gguf|ggml|safetensors|bin|pt|pth|ckpt|onnx)$" || true)
+if [ -n "$bad" ]; then echo "BLOCKED: model files staged:"; echo "$bad"; exit 1; fi
+for f in $staged; do
+  size=$(git cat-file -s ":$f")
+  if [ "$size" -gt 5242880 ]; then echo "BLOCKED: $f over 5 MB"; exit 1; fi
+done
+if git diff --cached -U0 | grep -qE "^\+.*(ghp_[A-Za-z0-9]{20,}|sk-[A-Za-z0-9]{20,})"; then echo "BLOCKED: possible secret"; exit 1; fi
+py=$(echo "$staged" | grep -E "\.py$" || true)
+if [ -n "$py" ]; then
+  if command -v ruff >/dev/null; then echo "$py" | xargs ruff check; else echo "$py" | xargs python3 -m py_compile; fi
+fi

@@ -1,0 +1,12 @@
+models/
+adapters/
+*.gguf
+*.safetensors
+__pycache__/
+.venv/
+models/
+adapters/
+*.gguf
+*.safetensors
+__pycache__/
+.venv/

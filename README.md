@@ -52,3 +52,5 @@ To keep this repository lightweight and prevent large model weights from bloatin
 git config core.hooksPath .githooks
 
 This will automatically check your local commits for syntax errors, exposed API keys, and accidentally staged model weights before they are pushed to the main repository. If you need to bypass these checks in an absolute emergency, append --no-verify to your commit command.
+
+See [docs/PIPELINES.md](docs/PIPELINES.md) for the runtime, CI/CD and n8n pipelines.

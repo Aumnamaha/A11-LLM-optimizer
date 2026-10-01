@@ -10,3 +10,4 @@ adapters/
 *.safetensors
 __pycache__/
 .venv/
+venv/

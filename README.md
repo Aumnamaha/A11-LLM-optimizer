@@ -48,7 +48,7 @@ To maintain a completely code-free setup process, the system relies on standard 
 ##For Developers & Contributors
 To keep this repository lightweight and prevent large model weights from bloating the version history, we use custom Git hooks. After cloning the repository, please run the following command to enable them:
 
-##bash
+bash
 git config core.hooksPath .githooks
 
 This will automatically check your local commits for syntax errors, exposed API keys, and accidentally staged model weights before they are pushed to the main repository. If you need to bypass these checks in an absolute emergency, append --no-verify to your commit command.

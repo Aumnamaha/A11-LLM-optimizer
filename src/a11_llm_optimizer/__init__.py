@@ -2,12 +2,14 @@
 
 __all__ = [
     "AdapterRegistry",
+    "AdapterManager",
     "IntentRouter",
     "Optimizer",
     "BenchmarkRunner",
     "ModelBackend",
 ]
 
+from .adapter_manager import AdapterManager
 from .adapter_registry import AdapterRegistry
 from .benchmark import BenchmarkRunner
 from .model_backend import ModelBackend

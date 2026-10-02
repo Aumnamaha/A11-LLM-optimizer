@@ -26,8 +26,8 @@ jobs:
 
       - name: Install tools
         run: |
-          pip install ruff pytest
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install -r requirements-dev.txt
+          pip install -e .
 
       - name: Lint
         run: ruff check .
@@ -35,3 +35,9 @@ jobs:
       - name: Test
         run: |
           if [ -d tests ]; then pytest -q; else echo "no tests yet"; fi
+
+      - name: Format check
+        run: ruff format --check .
+
+      - name: Typecheck
+        run: mypy .

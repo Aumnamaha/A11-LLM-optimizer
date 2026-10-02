@@ -2,14 +2,14 @@
 
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import Any
 
 
 class RequestMetrics:
     """Stores request-level latency and adapter selection data."""
 
     def __init__(self) -> None:
-        self.events: List[Dict[str, object]] = []
+        self.events: list[dict[str, Any]] = []
 
     def record_request(
         self,
@@ -17,7 +17,7 @@ class RequestMetrics:
         adapter: str,
         latency_ms: float,
         success: bool = True,
-    ) -> Dict[str, object]:
+    ) -> dict[str, Any]:
         event = {
             "prompt": prompt,
             "adapter": adapter,
@@ -27,7 +27,7 @@ class RequestMetrics:
         self.events.append(event)
         return dict(event)
 
-    def snapshot(self) -> Dict[str, object]:
+    def snapshot(self) -> dict[str, Any]:
         if not self.events:
             return {
                 "total_requests": 0,
@@ -35,7 +35,7 @@ class RequestMetrics:
                 "by_adapter": {},
             }
 
-        by_adapter: Dict[str, int] = {}
+        by_adapter: dict[str, int] = {}
         total_latency = 0.0
 
         for event in self.events:

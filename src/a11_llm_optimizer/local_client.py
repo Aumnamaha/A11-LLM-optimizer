@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict
+from typing import Any
 
 
 class LocalLLMClient:
@@ -11,7 +11,7 @@ class LocalLLMClient:
     def __init__(self, base_url: str = "http://localhost:8080") -> None:
         self.base_url = base_url.rstrip("/")
 
-    def completion(self, payload: Dict[str, Any]) -> Dict[str, Any]:
+    def completion(self, payload: dict[str, Any]) -> dict[str, Any]:
         """Return a simulated response object for local development."""
         return {
             "status": "ok",

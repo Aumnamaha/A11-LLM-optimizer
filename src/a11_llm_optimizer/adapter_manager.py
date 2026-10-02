@@ -2,15 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Dict, Optional
-
 
 class AdapterManager:
     """Tracks adapter paths and resolves default fallback behavior."""
 
     def __init__(
         self,
-        adapters: Optional[Dict[str, str]] = None,
+        adapters: dict[str, str] | None = None,
         default_path: str = "adapters/default.gguf",
     ) -> None:
         self.adapters = {key.lower(): value for key, value in (adapters or {}).items()}
@@ -25,4 +23,4 @@ class AdapterManager:
 
     def is_available(self, name: str) -> bool:
         """Check whether the requested adapter exists in the registry."""
-        return ((name or "").strip().lower() in self.adapters)
+        return (name or "").strip().lower() in self.adapters

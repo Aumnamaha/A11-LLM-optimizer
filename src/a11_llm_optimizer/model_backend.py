@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict
+from typing import Any
 
 
 class ModelBackend:
@@ -17,7 +17,7 @@ class ModelBackend:
         adapter: str,
         max_tokens: int = 256,
         temperature: float = 0.3,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         return {
             "prompt": prompt,
             "adapter": adapter,
@@ -31,7 +31,7 @@ class ModelBackend:
         adapter: str,
         max_tokens: int = 256,
         temperature: float = 0.3,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         payload = self.build_payload(
             prompt=prompt,
             adapter=adapter,

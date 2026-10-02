@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import time
-from typing import Dict, Iterable, List
+from collections.abc import Iterable
 
 from .optimizer import Optimizer
 
@@ -13,7 +13,7 @@ class BenchmarkRunner:
 
     def __init__(
         self,
-        prompts: Dict[str, Iterable[str]] | None = None,
+        prompts: dict[str, Iterable[str]] | None = None,
         optimizer: Optimizer | None = None,
     ) -> None:
         self.optimizer = optimizer or Optimizer()
@@ -34,12 +34,12 @@ class BenchmarkRunner:
         if prompts:
             self.prompts = {key: list(values) for key, values in prompts.items()}
 
-    def run(self) -> Dict[str, List[Dict[str, object]]]:
+    def run(self) -> dict[str, list[dict[str, object]]]:
         """Measure route selection and execution time for each prompt."""
-        results: Dict[str, List[Dict[str, object]]] = {}
+        results: dict[str, list[dict[str, object]]] = {}
 
         for domain, prompts in self.prompts.items():
-            domain_results: List[Dict[str, object]] = []
+            domain_results: list[dict[str, object]] = []
             for prompt in prompts:
                 start = time.perf_counter()
                 payload = self.optimizer.optimize(prompt)

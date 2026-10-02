@@ -2,7 +2,6 @@ from fastapi.testclient import TestClient
 
 from a11_llm_optimizer.api import app
 
-
 client = TestClient(app)
 
 

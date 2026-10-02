@@ -38,12 +38,12 @@ inventory = AdapterInventory(
 )
 scorer = QualityScorer()
 failover = FailoverPolicy(default_adapter="adapters/default.gguf")
-health = RuntimeHealth(paths={"models": "models", "adapters": "adapters"})
+runtime_health = RuntimeHealth(paths={"models": "models", "adapters": "adapters"})
 
 
 @app.get("/health")
 def health() -> dict:
-    result = health.check()
+    result = runtime_health.check()
     return {
         "status": "ok" if all(v == "ok" for v in result.values()) else "warning",
         "metrics": metrics.snapshot(),

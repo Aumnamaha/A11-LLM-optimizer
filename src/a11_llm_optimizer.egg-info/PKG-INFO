@@ -1,0 +1,105 @@
+Metadata-Version: 2.4
+Name: a11-llm-optimizer
+Version: 0.1.0
+Summary: A local LLM optimizer with intent routing and adapter selection.
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+
+
+# A11-LLM-optimizer
+
+> A lightweight local optimizer that routes requests to specialized adapters instead of loading a large monolithic model.
+
+## Project Goal
+
+This project is designed around the idea that a small shared base model stays resident, while domain-specific adapters are selected per request. The router identifies the intent of the prompt and chooses the correct adapter before generating output.
+
+## Current Implementation Status
+
+This repository now includes:
+
+- a Python package structure for the optimizer
+- an intent router for prompt-to-domain matching
+- an adapter registry for mapping domains to adapter files
+- an optimizer orchestrator that packages request metadata
+- a local inference client wrapper
+- a pytest-based baseline to verify the routing behavior
+
+## Repository Structure
+
+```text
+.
+├── src/
+│   └── a11_llm_optimizer/
+│       ├── __init__.py
+│       ├── adapter_registry.py
+│       ├── config.py
+│       ├── local_client.py
+│       ├── optimizer.py
+│       └── router.py
+├── tests/
+│   ├── test_adapter_registry.py
+│   └── test_router.py
+├── .env.example
+├── .gitignore
+├── requirements.txt
+├── pyproject.toml
+├── docs/
+│   └── PIPELINES.md
+├── .github/workflows/ci.yml
+├── .githooks/
+├── models/
+├── adapters/
+└── README.md
+```
+
+## Usage
+
+```bash
+python -m pip install -r requirements.txt
+PYTHONPATH=src pytest -q
+```
+
+Example optimizer flow:
+
+```python
+from a11_llm_optimizer.optimizer import Optimizer
+
+optimizer = Optimizer()
+result = optimizer.optimize("Write a Python script to scrape a website.")
+print(result)
+```
+
+Example output:
+
+```python
+{
+    "adapter": "python",
+    "adapter_path": "adapters/python_coder.gguf",
+    "request": {
+        "prompt": "Write a Python script to scrape a website.",
+        "max_tokens": 256,
+        "temperature": 0.3,
+        "adapter": "python",
+        "scale": 1.0,
+    },
+}
+```
+
+## Core Idea
+
+1. Keep the base model loaded in memory.
+2. Route the input to the best domain adapter.
+3. Apply the selected adapter and generate output.
+4. Keep fallback logic ready when a domain is unknown.
+
+## Roadmap
+
+- add a proper model server integration layer
+- add adapter metadata validation
+- add latency and cost tracking
+- add benchmark scripts
+- add real prompt classification models
+- add deployment and API wrappers
+
+See [docs/PIPELINES.md](docs/PIPELINES.md) for the runtime and CI/CD flow.

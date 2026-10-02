@@ -2,13 +2,11 @@
 
 from __future__ import annotations
 
-from typing import Dict, List
-
 
 class IntentRouter:
     """Simple keyword-based router that maps prompts to a target adapter."""
 
-    DOMAIN_KEYWORDS: Dict[str, List[str]] = {
+    DOMAIN_KEYWORDS: dict[str, list[str]] = {
         "python": [
             "python",
             "script",
@@ -69,7 +67,7 @@ class IntentRouter:
         temperature: float = 0.3,
         adapter: str | None = None,
         scale: float = 1.0,
-    ) -> Dict[str, object]:
+    ) -> dict[str, object]:
         """Build a structured request payload for the local server."""
         selected_adapter = adapter or self.route(prompt)
 

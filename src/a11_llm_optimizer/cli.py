@@ -16,7 +16,9 @@ def run_prompt(prompt: str, max_tokens: int = 256) -> dict:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Route a prompt to the correct local adapter.")
     parser.add_argument("prompt", help="User prompt to route and optimize.")
-    parser.add_argument("--max-tokens", type=int, default=256, help="Maximum tokens for generation.")
+    parser.add_argument(
+        "--max-tokens", type=int, default=256, help="Maximum tokens for generation."
+    )
     args = parser.parse_args(argv)
 
     result = run_prompt(args.prompt, max_tokens=args.max_tokens)

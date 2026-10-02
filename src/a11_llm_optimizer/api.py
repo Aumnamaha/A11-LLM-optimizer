@@ -8,10 +8,12 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 
 from .adapter_inventory import AdapterInventory
+from .failover import FailoverPolicy
 from .local_client import LocalLLMClient
 from .metrics import RequestMetrics
 from .optimizer import Optimizer
 from .quality_score import QualityScorer
+from .runtime_health import RuntimeHealth
 
 
 class RouteRequest(BaseModel):
@@ -35,14 +37,18 @@ inventory = AdapterInventory(
     }
 )
 scorer = QualityScorer()
+failover = FailoverPolicy(default_adapter="adapters/default.gguf")
+health = RuntimeHealth(paths={"models": "models", "adapters": "adapters"})
 
 
 @app.get("/health")
 def health() -> dict:
+    result = health.check()
     return {
-        "status": "ok",
+        "status": "ok" if all(v == "ok" for v in result.values()) else "warning",
         "metrics": metrics.snapshot(),
         "inventory": inventory.scan(),
+        "runtime": result,
     }
 
 
@@ -60,17 +66,20 @@ def get_inventory() -> dict:
 def route(request: RouteRequest) -> dict:
     start = time.perf_counter()
     result = optimizer.optimize(request.prompt, max_tokens=request.max_tokens)
+    adapter_name = result["adapter"]
+    selected_adapter = failover.resolve(adapter_name)
+    result["adapter_path"] = selected_adapter
     latency_ms = (time.perf_counter() - start) * 1000
-    metrics.record_request(request.prompt, result["adapter"], latency_ms)
+    metrics.record_request(request.prompt, adapter_name, latency_ms)
     score = scorer.score(
         prompt=request.prompt,
-        adapter=result["adapter"],
+        adapter=adapter_name,
         latency_ms=latency_ms,
         success=True,
     )
     return {
-        "adapter": result["adapter"],
-        "adapter_path": result["adapter_path"],
+        "adapter": adapter_name,
+        "adapter_path": selected_adapter,
         "request": result["request"],
         "latency_ms": round(latency_ms, 3),
         "quality_score": score,

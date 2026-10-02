@@ -2,11 +2,17 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: ["**"]
   pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  checks:
+  guardrails:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -20,11 +26,24 @@ jobs:
             echo "File over 5 MB"; exit 1
           fi
 
+  quality:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v5
+
       - uses: actions/setup-python@v6
         with:
-          python-version: "3.12"
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: |
+            pyproject.toml
+            requirements-dev.txt
 
-      - name: Install tools
+      - name: Install
         run: |
           pip install -r requirements-dev.txt
           pip install -e .
@@ -32,12 +51,11 @@ jobs:
       - name: Lint
         run: ruff check .
 
-      - name: Test
-        run: |
-          if [ -d tests ]; then pytest -q; else echo "no tests yet"; fi
-
       - name: Format check
         run: ruff format --check .
 
       - name: Typecheck
         run: mypy .
+
+      - name: Test
+        run: pytest -q

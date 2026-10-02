@@ -1,56 +1,98 @@
 
 # A11-LLM-optimizer
 
-> **A11 Local Language Model Optimizer for a Common Man**
+> A lightweight local optimizer that routes requests to specialized adapters instead of loading a large monolithic model.
 
-The A11-LLM-optimizer is an event-driven, dynamic routing architecture designed to run advanced AI capabilities on standard, low-end consumer hardware. It bypasses the massive memory bottlenecks of traditional Mixture of Experts models by utilizing a persistent, lightweight base model and hot-swapping specialized domain adapters directly from an SSD.
+## Project Goal
 
-**Repository:** [https://github.com/Aumnamaha/A11-LLM-optimizer.git](https://github.com/Aumnamaha/A11-LLM-optimizer.git)
+This project is designed around the idea that a small shared base model stays resident, while domain-specific adapters are selected per request. The router identifies the intent of the prompt and chooses the correct adapter before generating output.
 
----
+## Current Implementation Status
 
-## The "Common Man" Philosophy
+This repository now includes:
 
-Running massive multi-billion parameter models locally usually requires expensive, high-end hardware. This optimizer is built specifically for everyday users, ensuring high-speed inference without crashing systems with highly limited memory pools.
+- a Python package structure for the optimizer
+- an intent router for prompt-to-domain matching
+- an adapter registry for mapping domains to adapter files
+- an optimizer orchestrator that packages request metadata
+- a local inference client wrapper
+- a pytest-based baseline to verify the routing behavior
 
-### Target Hardware Profile
+## Repository Structure
 
-This system is natively tuned for entry-level laptops and low-end desktop environments:
+```text
+.
+├── src/
+│   └── a11_llm_optimizer/
+│       ├── __init__.py
+│       ├── adapter_registry.py
+│       ├── config.py
+│       ├── local_client.py
+│       ├── optimizer.py
+│       └── router.py
+├── tests/
+│   ├── test_adapter_registry.py
+│   └── test_router.py
+├── .env.example
+├── .gitignore
+├── requirements.txt
+├── pyproject.toml
+├── docs/
+│   └── PIPELINES.md
+├── .github/workflows/ci.yml
+├── .githooks/
+├── models/
+├── adapters/
+└── README.md
+```
 
-* **Operating System:** Windows, macOS, or standard Linux distributions.
-* **Compute:** Budget dual-core or quad-core consumer processors.
-* **Graphics:** Integrated graphics or low-end dedicated GPUs with as little as 4GB of VRAM.
-* **Memory:** 8GB to 16GB of standard system RAM.
-* **Storage:** A standard Solid State Drive (NVMe recommended to achieve instant adapter loading times).
+## Usage
 
-## Architecture
+```bash
+python -m pip install -r requirements.txt
+PYTHONPATH=src pytest -q
+```
 
-1. **The Core Base:** A fast, lightweight 3-billion-parameter base model is parked entirely in the available system memory or limited GPU VRAM.
-2. **The SSD Library:** Domain-specific adapters (small parameter packages tailored for coding, medical, writing, etc.) are kept entirely on the storage drive instead of taking up active memory.
-3. **The Intent Router:** A lightweight background process evaluates the user's prompt to determine which specific domain knowledge is required.
-4. **The Seamless Hot-Swap:** The router instructs the backend engine to pull only the single necessary adapter off the SSD, apply the weights to the active base model instantly, and generate the response.
+Example optimizer flow:
 
-## Installation & Setup Instructions
+```python
+from a11_llm_optimizer.optimizer import Optimizer
 
-To maintain a completely code-free setup process, the system relies on standard file organization and pre-packaged tools.
+optimizer = Optimizer()
+result = optimizer.optimize("Write a Python script to scrape a website.")
+print(result)
+```
 
-1. **Download the Repository:** Navigate to the GitHub link provided above and download the repository as a ZIP file. Extract it to your preferred location on your computer.
-2. **Organize Your Models:** Download a lightweight base model and place it in the designated `models` folder. Download any specialized domain adapters you want to use and place them in the `adapters` folder.
-3. **Launch the Inference Engine:** Open your preferred local AI backend. Load the core base model from your `models` folder, instruct the software to use whatever hardware acceleration is available, and ensure the local server is running.
-4. **Execute the Router:** Open the provided router application. Type your prompt directly into the interface. The system will automatically detect the subject matter, connect to your local backend, fetch the correct adapter from your storage drive, and stream the highly specialized response back to you.
+Example output:
 
-## Roadmap & Future Integrations
+```python
+{
+    "adapter": "python",
+    "adapter_path": "adapters/python_coder.gguf",
+    "request": {
+        "prompt": "Write a Python script to scrape a website.",
+        "max_tokens": 256,
+        "temperature": 0.3,
+        "adapter": "python",
+        "scale": 1.0,
+    },
+}
+```
 
-* **Visual Node Interfaces:** Transition the background routing logic into visual webhook platforms to enable event-driven messaging triggers and automated analysis without requiring any programming knowledge.
-* **Local Document Retrieval:** Connect a local document database to feed real-time personal context into the base model alongside the specialized adapters.
-* **Expanded Adapter Library:** Host a community repository of pre-trained, lightweight adapters optimized specifically for budget hardware execution.
+## Core Idea
 
-## For Developers & Contributors
-To keep this repository lightweight and prevent large model weights from bloating the version history, we use custom Git hooks. After cloning the repository, please run the following command to enable them:
+1. Keep the base model loaded in memory.
+2. Route the input to the best domain adapter.
+3. Apply the selected adapter and generate output.
+4. Keep fallback logic ready when a domain is unknown.
 
-## bash
-git config core.hooksPath .githooks
+## Roadmap
 
-This will automatically check your local commits for syntax errors, exposed API keys, and accidentally staged model weights before they are pushed to the main repository. If you need to bypass these checks in an absolute emergency, append --no-verify to your commit command.
+- add a proper model server integration layer
+- add adapter metadata validation
+- add latency and cost tracking
+- add benchmark scripts
+- add real prompt classification models
+- add deployment and API wrappers
 
-See [docs/PIPELINES.md](docs/PIPELINES.md) for the runtime, CI/CD and n8n pipelines.
+See [docs/PIPELINES.md](docs/PIPELINES.md) for the runtime and CI/CD flow.

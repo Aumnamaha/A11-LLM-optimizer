@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
+repo_root="$(git rev-parse --show-toplevel)"
+if [[ -x "$repo_root/.venv/bin/python" ]]; then
+	export PATH="$repo_root/.venv/bin:$PATH"
+fi
 if command -v ruff >/dev/null; then ruff check .; fi
 if [ -d tests ] && command -v pytest >/dev/null; then pytest -q; fi

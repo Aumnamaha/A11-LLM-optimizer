@@ -4,6 +4,8 @@ Version: 0.1.0
 Summary: A local LLM optimizer with intent routing and adapter selection.
 Requires-Python: >=3.10
 Description-Content-Type: text/markdown
+Requires-Dist: fastapi
+Requires-Dist: pydantic
 
 
 # A11-LLM-optimizer

@@ -19,6 +19,7 @@ src/a11_llm_optimizer/runtime_health.py
 src/a11_llm_optimizer.egg-info/PKG-INFO
 src/a11_llm_optimizer.egg-info/SOURCES.txt
 src/a11_llm_optimizer.egg-info/dependency_links.txt
+src/a11_llm_optimizer.egg-info/requires.txt
 src/a11_llm_optimizer.egg-info/top_level.txt
 tests/test_adapter_inventory.py
 tests/test_adapter_manager.py

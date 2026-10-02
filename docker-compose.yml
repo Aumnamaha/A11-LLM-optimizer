@@ -6,10 +6,18 @@ services:
     ports:
       - "8080:8080"
     environment:
-      MODEL_BASE_PATH: ./models
-      ADAPTERS_PATH: ./adapters
+      MODEL_BASE_PATH: /app/models
+      ADAPTERS_PATH: /app/adapters
+      BASE_MODEL_FILE: ${BASE_MODEL_FILE:-base-3b-q4_k_m.gguf}
+      PYTHON_ADAPTER_FILE: ${PYTHON_ADAPTER_FILE:-python_coder.gguf}
+      MEDICAL_ADAPTER_FILE: ${MEDICAL_ADAPTER_FILE:-medical_expert.gguf}
+      CREATIVE_ADAPTER_FILE: ${CREATIVE_ADAPTER_FILE:-creative_writer.gguf}
       HOST: 0.0.0.0
       PORT: 8080
+      LLAMA_SERVER_URL: http://host.docker.internal:${LLAMA_SERVER_PORT:-8081}
+      LLAMA_SERVER_TIMEOUT_SECONDS: ${LLAMA_SERVER_TIMEOUT_SECONDS:-120}
     volumes:
-      - ./models:/app/models
-      - ./adapters:/app/adapters
+      - ./models:/app/models:ro
+      - ./adapters:/app/adapters:ro
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

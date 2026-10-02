@@ -4,16 +4,26 @@
 
 Flow: user prompt -> intent router -> select adapter -> local llama.cpp server -> response.
 
-Start the server once. Adapters are memory-mapped from the SSD and loaded without being applied:
+Run llama.cpp separately from the optimizer API. Copy `.env.example` to `.env`,
+put the configured model and adapter files under `models/` and `adapters/`, then
+start `./scripts/start_llama_server.sh` and `./scripts/start_optimizer.sh` in
+separate terminals. The default API port is 8080 and the llama.cpp port is
+8081. On the target CachyOS laptop (AMD Radeon RX 6500M, 4 GiB), build
+llama.cpp with Vulkan support and verify the GPU with
+`llama-server --list-devices`. `LLAMA_GPU_LAYERS=auto` is the default; tune
+context and numeric GPU-layer count to fit available VRAM. The server launcher
+validates that its 3B Q4 GGUF base model and all three GGUF LoRA adapters exist
+before starting:
 
-```bash
-llama-server -m models/base-3b.gguf \
-  --lora adapters/python_coder_lora.gguf \
-  --lora adapters/medical_lora.gguf \
-  --lora-init-without-apply --port 8080
-```
+The API's `/ready` endpoint checks those files and llama.cpp's `/health` endpoint.
+It returns HTTP 503 until every check succeeds. `/health` remains useful for
+observing current dependency status during startup.
 
-Adapter ids follow the order of the `--lora` flags (0, 1, ...). Check them with `GET /lora-adapters`.
+Adapter IDs follow the order of the `--lora` flags: Python `0`, medical `1`,
+creative `2`. Adapters must be compatible with the chosen base model and the
+llama.cpp build. Safetensors LoRAs need conversion to a supported GGUF format.
+GPU layer selection is configurable; check performance and memory use on the
+actual target hardware rather than assuming a fixed throughput.
 
 The router picks the domain and sets scales per request. No server restart:
 
@@ -24,16 +34,27 @@ The router picks the domain and sets scales per request. No server restart:
   "temperature": 0.3,
   "lora": [
     { "id": 0, "scale": 1.0 },
-    { "id": 1, "scale": 0.0 }
+    { "id": 1, "scale": 0.0 },
+    { "id": 2, "scale": 0.0 }
   ]
 }
 ```
 
-Adapters not listed in `lora` default to scale 0.
+The optimizer API calls the backend at `LLAMA_SERVER_URL` (default
+`http://localhost:8081`) and maps routed adapter names to these IDs. Adapters
+are loaded when the backend starts; per-request switching changes LoRA scales,
+not disk-to-VRAM loading. The project does not currently download or train the
+base model or adapters.
+
+`docker compose up --build` runs only the API container and connects it to the
+host's llama.cpp service at `host.docker.internal:8081`. Start the model server
+on the host first. The API container mounts model and adapter directories
+read-only; on Linux, Docker must support the `host-gateway` host mapping.
 
 ## 2. CI/CD Pipeline
 
-Defined in `.github/workflows/ci.yml`. Runs on push to main and on pull requests:
+Defined in `.github/workflows/ci.yml`. Runs on pushes to all branches and on
+pull requests targeting `main`:
 
 - Blocks tracked model weights (.gguf, .safetensors, .bin, .pt, etc.) and files over 5 MB
 - ruff check and ruff format --check
@@ -51,8 +72,6 @@ git config core.hooksPath .githooks
 | Step | Node | Purpose | Config |
 | --- | --- | --- | --- |
 | 1. Trigger | Webhook | Receive the prompt (Telegram bot, web form) | POST, path: chat-input |
-| 2. Intent Router | Switch | Pick a domain from prompt keywords | Route 1: contains "python" -> Coding. Route 2: contains "treatment" -> Medical |
-| 3. Variable Setup | Set | Set the adapter id for the chosen domain | adapter_id = 0 (coding) or 1 (medical) |
-| 4. Backend Request | HTTP Request | Send prompt and lora scales to the local server | POST http://localhost:8080/completion, JSON body as in section 1 |
-| 5. Output | Telegram / Email | Return the response | Map the content field to the message body |
+| 2. Optimizer Request | HTTP Request | Route and generate through the optimizer API | POST `http://localhost:8080/generate` with `prompt`, `max_tokens`, and `temperature` |
+| 3. Output | Telegram / Email | Return the response | Map `response.content` to the message body |
 

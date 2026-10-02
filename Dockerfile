@@ -9,6 +9,7 @@ COPY src ./src
 COPY tests ./tests
 
 ENV PYTHONPATH=/app/src
+ENV HOST=0.0.0.0 PORT=8080
 EXPOSE 8080
 
-CMD ["python", "-m", "uvicorn", "a11_llm_optimizer.api:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["sh", "-c", "python -m uvicorn a11_llm_optimizer.api:app --host \"$HOST\" --port \"$PORT\""]

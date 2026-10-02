@@ -4,12 +4,14 @@ from __future__ import annotations
 
 from typing import Any
 
+from .local_client import LocalLLMClient
+
 
 class ModelBackend:
-    """Simple wrapper for interacting with a local llama.cpp or compatible backend."""
+    """Convenience wrapper for routed calls to a local llama.cpp server."""
 
-    def __init__(self, base_url: str = "http://localhost:8080") -> None:
-        self.base_url = base_url.rstrip("/")
+    def __init__(self, base_url: str | None = None) -> None:
+        self.client = LocalLLMClient(base_url=base_url)
 
     def build_payload(
         self,
@@ -38,9 +40,4 @@ class ModelBackend:
             max_tokens=max_tokens,
             temperature=temperature,
         )
-        return {
-            "status": "ok",
-            "base_url": self.base_url,
-            "adapter": adapter,
-            "payload": payload,
-        }
+        return self.client.completion(payload)

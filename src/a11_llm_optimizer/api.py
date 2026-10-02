@@ -4,10 +4,13 @@ from __future__ import annotations
 
 import time
 
-from fastapi import FastAPI
-from pydantic import BaseModel
+import httpx
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel, Field
 
 from .adapter_inventory import AdapterInventory
+from .adapter_registry import AdapterRegistry
+from .config import settings
 from .failover import FailoverPolicy
 from .local_client import LocalLLMClient
 from .metrics import RequestMetrics
@@ -17,28 +20,35 @@ from .runtime_health import RuntimeHealth
 
 
 class RouteRequest(BaseModel):
-    prompt: str
-    max_tokens: int = 256
+    prompt: str = Field(min_length=1, max_length=32768)
+    max_tokens: int = Field(default=256, ge=1, le=8192)
 
 
 class GenerateRequest(RouteRequest):
-    temperature: float = 0.3
+    temperature: float = Field(default=0.3, ge=0.0, le=2.0)
 
 
 app = FastAPI(title="A11 LLM Optimizer")
-optimizer = Optimizer()
-client = LocalLLMClient()
+optimizer = Optimizer(
+    registry=AdapterRegistry(settings.adapter_paths, settings.default_adapter_path)
+)
+client = LocalLLMClient(adapter_ids=settings.adapter_ids)
 metrics = RequestMetrics()
 inventory = AdapterInventory(
-    adapter_map={
-        "python": "adapters/python_coder.gguf",
-        "medical": "adapters/medical_lora.gguf",
-        "creative": "adapters/creative_writer.gguf",
-    }
+    adapter_dir=settings.adapters_path,
+    adapter_map=settings.adapter_paths,
 )
 scorer = QualityScorer()
-failover = FailoverPolicy(default_adapter="adapters/default.gguf")
-runtime_health = RuntimeHealth(paths={"models": "models", "adapters": "adapters"})
+failover = FailoverPolicy(
+    default_adapter=settings.default_adapter_path,
+    adapter_map=settings.adapter_paths,
+)
+runtime_health = RuntimeHealth(
+    paths={"models": settings.model_base_path, "adapters": settings.adapters_path},
+    required_files={"base_model": settings.model_path, **settings.adapter_paths},
+    backend_url=settings.llama_server_url,
+    timeout_seconds=min(settings.llama_server_timeout_seconds, 2.0),
+)
 
 
 @app.get("/health")
@@ -50,6 +60,17 @@ def health() -> dict:
         "inventory": inventory.scan(),
         "runtime": result,
     }
+
+
+@app.get("/ready")
+def ready() -> dict:
+    result = runtime_health.check()
+    if not all(status == "ok" for status in result.values()):
+        raise HTTPException(
+            status_code=503,
+            detail={"status": "not_ready", "checks": result},
+        )
+    return {"status": "ready", "checks": result}
 
 
 @app.get("/metrics")
@@ -89,8 +110,17 @@ def route(request: RouteRequest) -> dict:
 @app.post("/generate")
 def generate(request: GenerateRequest) -> dict:
     start = time.perf_counter()
-    result = optimizer.optimize(request.prompt, max_tokens=request.max_tokens)
-    response = client.completion(result["request"])
+    result = optimizer.optimize(
+        request.prompt,
+        max_tokens=request.max_tokens,
+        temperature=request.temperature,
+    )
+    try:
+        response = client.completion(result["request"])
+    except httpx.HTTPError as error:
+        latency_ms = (time.perf_counter() - start) * 1000
+        metrics.record_request(request.prompt, result["adapter"], latency_ms, success=False)
+        raise HTTPException(status_code=502, detail="Inference backend request failed") from error
     latency_ms = (time.perf_counter() - start) * 1000
     metrics.record_request(request.prompt, result["adapter"], latency_ms)
     score = scorer.score(

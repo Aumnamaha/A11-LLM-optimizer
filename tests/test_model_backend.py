@@ -1,3 +1,4 @@
+from a11_llm_optimizer import local_client
 from a11_llm_optimizer.model_backend import ModelBackend
 
 
@@ -17,8 +18,16 @@ def test_backend_builds_local_request_payload():
     assert payload["temperature"] == 0.2
 
 
-def test_backend_returns_status_for_simulated_generation():
-    backend = ModelBackend(base_url="http://localhost:8080")
+def test_backend_returns_real_completion(monkeypatch):
+    class FakeResponse:
+        def raise_for_status(self):
+            pass
+
+        def json(self):
+            return {"content": "Generated answer"}
+
+    monkeypatch.setattr(local_client.httpx, "post", lambda *args, **kwargs: FakeResponse())
+    backend = ModelBackend(base_url="http://localhost:8081")
 
     result = backend.generate(
         prompt="Explain medical symptoms in simple terms.",
@@ -26,5 +35,4 @@ def test_backend_returns_status_for_simulated_generation():
         max_tokens=64,
     )
 
-    assert result["status"] == "ok"
-    assert result["adapter"] == "medical"
+    assert result["content"] == "Generated answer"

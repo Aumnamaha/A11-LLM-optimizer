@@ -23,9 +23,19 @@ class Optimizer:
             }
         )
 
-    def optimize(self, prompt: str, max_tokens: int = 256) -> dict:
+    def optimize(
+        self,
+        prompt: str,
+        max_tokens: int = 256,
+        temperature: float = 0.3,
+    ) -> dict:
         adapter_name = self.router.route(prompt)
-        request = self.router.build_request(prompt, max_tokens=max_tokens, adapter=adapter_name)
+        request = self.router.build_request(
+            prompt,
+            max_tokens=max_tokens,
+            temperature=temperature,
+            adapter=adapter_name,
+        )
         return {
             "adapter": adapter_name,
             "adapter_path": self.registry.get(adapter_name),

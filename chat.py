@@ -8,8 +8,8 @@ from engine.pipeline import A11Pipeline
 from engine.context_manager import WorkspaceContextManager
 
 def launch_chat():
-    MODEL_DIR = "/home/aumnamaha/Documents/Local Ai/Qwen 3.8 Flash Next"
-    TARGET_WORKSPACE = "/home/aumnamaha/Documents/Proj/Student_Feedback"
+    MODEL_DIR = "/home/knk/Projects/A11-LLM-optimizer/models/Qwen3-30B-A3B"
+    TARGET_WORKSPACE = "/home/knk/Projects/A11-LLM-optimizer"
 
     if not os.path.exists(MODEL_DIR):
         print(f"[Error] Model path missing: {MODEL_DIR}")

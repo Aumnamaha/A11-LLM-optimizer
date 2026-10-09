@@ -91,6 +91,6 @@ class SplitGGUFLoader:
         return self.shards[0]
 
 if __name__ == "__main__":
-    target_dir = "/home/aumnamaha/Documents/Local Ai/Qwen 3.8 Flash Next"
+    target_dir = "/home/knk/Projects/A11-LLM-optimizer/models/Qwen3-30B-A3B"
     if os.path.exists(target_dir):
         loader = SplitGGUFLoader(target_dir)

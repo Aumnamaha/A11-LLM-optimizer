@@ -26,8 +26,8 @@ def inspect_directory(dir_path: str) -> str:
     return formatted_tree
 
 def main():
-    MODEL_DIR = "/home/aumnamaha/Documents/Local Ai/Qwen 3.8 Flash Next"
-    TARGET_DIR = "/home/aumnamaha/Documents/Proj/Student_Feedback"
+    MODEL_DIR = "/home/knk/Projects/A11-LLM-optimizer/models/Qwen3-30B-A3B"
+    TARGET_DIR = "/home/knk/Projects/A11-LLM-optimizer"
 
     print("==========================================================")
     print("      A11-LLM-Optimizer Directory Analysis Test           ")

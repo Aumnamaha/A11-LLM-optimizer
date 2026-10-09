@@ -49,7 +49,7 @@ class QwenTokenizerManager:
         return "".join([chr(tid) if tid < 256 else "?" for tid in token_ids])
 
 if __name__ == "__main__":
-    target_dir = "/home/aumnamaha/Documents/Local Ai/Qwen 3.8 Flash Next"
+    target_dir = "/home/knk/Projects/A11-LLM-optimizer/models/Qwen3-30B-A3B"
     tok_mgr = QwenTokenizerManager(target_dir)
     
     sample_text = "What caused World War 2?"

@@ -31,7 +31,7 @@ class ChatCompletionRequest(BaseModel):
 @app.on_event("startup")
 def startup_event():
     global pipeline_instance
-    model_dir = "/home/aumnamaha/Documents/Local Ai/Qwen 3.8 Flash Next"
+    model_dir = "/home/knk/Projects/A11-LLM-optimizer/models/Qwen3-30B-A3B"
     print("\n[Server Boot] Initializing A11 Engine Pipeline...")
     pipeline_instance = A11Pipeline(model_dir, vram_budget_gb=4.0, ram_budget_gb=16.0)
 

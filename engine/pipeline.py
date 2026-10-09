@@ -208,7 +208,7 @@ class A11Pipeline:
         self.mmap_mgr.close()
 
 if __name__ == "__main__":
-    MODEL_DIR = "/home/aumnamaha/Documents/Local Ai/Qwen 3.8 Flash Next"
+    MODEL_DIR = "/home/knk/Projects/A11-LLM-optimizer/models/Qwen3-30B-A3B"
     if os.path.exists(MODEL_DIR):
         pipeline = A11Pipeline(MODEL_DIR)
         pipeline.shutdown()

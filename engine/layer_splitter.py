@@ -42,7 +42,7 @@ class LayerMemorySplitter:
 
 if __name__ == "__main__":
     import os
-    target_dir = "/home/aumnamaha/Documents/Local Ai/Qwen 3.8 Flash Next"
+    target_dir = "/home/knk/Projects/A11-LLM-optimizer/models/Qwen3-30B-A3B"
     if os.path.exists(target_dir):
         loader = SplitGGUFLoader(target_dir)
         splitter = LayerMemorySplitter(loader, vram_budget_gb=4.0, ram_budget_gb=16.0)

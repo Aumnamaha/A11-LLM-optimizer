@@ -129,5 +129,32 @@ A11-local_language_model-optimizer/
 
 ---
 
+## 🧪 Development, CI & Git Hooks
+
+The project ships with a cross-platform toolchain (Linux, macOS, and Windows):
+
+**CI pipeline** — `.github/workflows/ci.yml` runs on every push/PR:
+- Ruff lint gate (critical syntax/undefined-name checks + advisory full report)
+- Native C++ extension build, byte-compile, and engine smoke tests on an
+  `ubuntu` / `macos` / `windows` × Python 3.11/3.12 matrix
+
+**Local git hooks** — install once (any OS):
+
+```bash
+python scripts/setup_hooks.py
+```
+
+- **pre-commit:** whitespace/EOF/YAML/TOML checks, large-file guard, ruff
+- **pre-push:** `scripts/pre_push.py` (ruff gate + `pytest`)
+
+Run the checks manually at any time:
+
+```bash
+python scripts/pre_push.py        # lint + tests
+pre-commit run --all-files        # all hooks
+```
+
+---
+
 ## 📜 License
 Distributed under the **MIT License**.

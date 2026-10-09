@@ -1,0 +1,77 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  # -------------------------------------------------------------------------
+  # Lint: blocking critical gate + advisory full report (runner-OS agnostic)
+  # -------------------------------------------------------------------------
+  lint:
+    name: Lint (ruff)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Install ruff
+        run: python -m pip install "ruff==0.16.10"
+      - name: Ruff critical gate (syntax errors & undefined names)
+        run: ruff check --select E9,F63,F7,F82 --output-format=github .
+      - name: Ruff full report (advisory)
+        continue-on-error: true
+        run: ruff check --statistics .
+
+  # -------------------------------------------------------------------------
+  # Build the native extension, byte-compile, and run tests on Linux/macOS/Windows
+  # -------------------------------------------------------------------------
+  build-test:
+    name: ${{ matrix.os }} · Python ${{ matrix.python-version }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: requirements*.txt
+
+      # Linux/Windows pull the (much smaller) CPU-only wheels from the
+      # PyTorch CPU index. macOS PyPI wheels are already CPU/MPS.
+      - name: Install PyTorch (CPU wheels, Linux & Windows)
+        if: runner.os != 'macOS'
+        run: python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+
+      - name: Install PyTorch (macOS)
+        if: runner.os == 'macOS'
+        run: python -m pip install torch
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements-dev.txt
+
+      - name: Byte-compile Python sources
+        run: python -m compileall -q engine chat.py main.py setup.py
+
+      - name: Build native C++ extension
+        run: python setup.py build_ext --inplace
+
+      - name: Run tests
+        run: python -m pytest -q

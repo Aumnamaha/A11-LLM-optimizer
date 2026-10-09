@@ -2,6 +2,24 @@ __pycache__/
 *.pyc
 *.so
 *.o
+*.pyd
+*.dll
+*.dylib
 build/
+dist/
+*.egg-info/
 .ninja_deps
 .ninja_log
+
+# Virtual environments
+.venv/
+venv/
+
+# Local model weights (large GGUF shards)
+models/
+
+# Tool / test caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+

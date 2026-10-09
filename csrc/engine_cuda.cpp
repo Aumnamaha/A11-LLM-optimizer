@@ -1,4 +1,5 @@
 #include <torch/extension.h>
+#include <cstdint>
 #include <vector>
 
 // C++ Zero-Copy mmap + Quantized Vector Dot Product Core

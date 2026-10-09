@@ -1,8 +1,9 @@
 name: CI
 
 on:
+  # Run on every branch push (including newly created branches) and on PRs.
   push:
-    branches: [main]
+    branches: ["**"]
   pull_request:
   workflow_dispatch:
 

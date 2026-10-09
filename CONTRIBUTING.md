@@ -116,7 +116,8 @@ Runs on **every `git push`** and is the last local safety net:
 
 ### 3. CI pipeline — `.github/workflows/ci.yml`
 
-Runs on **push to `main`**, **pull requests**, and **manual dispatch**:
+Runs on **push to any branch** (including newly created branches),
+**pull requests**, and **manual dispatch**:
 
 - **Lint (ruff)** — blocking critical gate plus an advisory full report.
 - **Test & Build** — matrix of `ubuntu` / `macos` / `windows` × Python `3.11` /

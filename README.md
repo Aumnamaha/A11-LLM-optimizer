@@ -154,6 +154,9 @@ python scripts/pre_push.py        # lint + tests
 pre-commit run --all-files        # all hooks
 ```
 
+See **[CONTRIBUTING.md](CONTRIBUTING.md)** for the full contribution workflow,
+hook/pipeline details, and commit conventions.
+
 ---
 
 ## 📜 License

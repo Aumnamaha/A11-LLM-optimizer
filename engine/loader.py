@@ -69,7 +69,8 @@ class SplitGGUFLoader:
                         "shard": shard_name,
                         "shape": tensor.shape.tolist(),
                         "type": str(tensor.tensor_type),
-                        "offset": data_offset
+                        "offset": data_offset,
+                        "n_bytes": int(getattr(tensor, 'n_bytes', 0)),
                     }
                     
                     # Categorize N-Gram vs Expert weights for Qwen architectures

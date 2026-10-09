@@ -46,7 +46,7 @@ def main():
     )
 
     # 3. Initialize Engine & Execute
-    pipeline = A11Pipeline(MODEL_DIR, vram_budget_gb=4.0, ram_budget_gb=16.0)
+    pipeline = A11Pipeline(MODEL_DIR)
     
     try:
         print("\n--- [Executing Model Inference Step] ---")

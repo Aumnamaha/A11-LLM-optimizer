@@ -7,8 +7,16 @@ import time
 from engine.pipeline import A11Pipeline
 from engine.context_manager import WorkspaceContextManager
 
+import argparse
+
 def launch_chat():
-    MODEL_DIR = "/home/knk/Projects/A11-LLM-optimizer/models/Qwen3-30B-A3B"
+    parser = argparse.ArgumentParser(description="A11-LLM-Optimizer Interactive Chatbot")
+    parser.add_argument("--vram", type=float, default=None, help="Target VRAM budget in GB (default: auto-detected)")
+    parser.add_argument("--ram", type=float, default=None, help="Target System RAM budget in GB (default: auto-detected)")
+    parser.add_argument("--model-dir", type=str, default="/home/knk/Projects/A11-LLM-optimizer/models/Qwen3-30B-A3B", help="Path to model directory")
+    args, _ = parser.parse_known_args()
+
+    MODEL_DIR = args.model_dir
     TARGET_WORKSPACE = "/home/knk/Projects/A11-LLM-optimizer"
 
     if not os.path.exists(MODEL_DIR):
@@ -24,7 +32,7 @@ def launch_chat():
     print("==================================================================\n")
 
     ctx_mgr = WorkspaceContextManager(TARGET_WORKSPACE)
-    pipeline = A11Pipeline(MODEL_DIR, vram_budget_gb=4.0, ram_budget_gb=16.0)
+    pipeline = A11Pipeline(MODEL_DIR, vram_budget_gb=args.vram, ram_budget_gb=args.ram)
 
     try:
         while True:

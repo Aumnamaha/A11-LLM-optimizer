@@ -20,6 +20,7 @@ def test_all_engine_modules_import():
     modules = [
         "engine.context_manager",
         "engine.expert_cache",
+        "engine.hardware",
         "engine.layer_splitter",
         "engine.loader",
         "engine.mmap_loader",
@@ -96,3 +97,119 @@ def test_context_manager_builds_workspace_prompt(tmp_path):
 
     assert "explain this" in prompt
     assert "sample.py" in prompt
+
+
+def test_detect_hardware_returns_valid_profile():
+    from engine.hardware import detect_hardware, HardwareProfile
+
+    profile = detect_hardware()
+    assert isinstance(profile, HardwareProfile)
+    assert profile.total_ram_gb > 0.0
+    assert profile.available_ram_gb > 0.0
+    assert profile.cpu_count > 0
+    assert isinstance(profile.gpu_name, str)
+    assert profile.total_vram_gb >= 0.0
+    assert profile.free_vram_gb >= 0.0
+
+
+def test_evaluate_compatibility_clamps_over_allocated_budgets():
+    from engine.hardware import (
+        HardwareProfile,
+        ModelHardwareRequirements,
+        evaluate_compatibility,
+    )
+
+    profile = HardwareProfile(
+        total_ram_gb=16.0,
+        available_ram_gb=8.0,
+        used_ram_gb=8.0,
+        ram_utilization_pct=50.0,
+        gpu_detected=True,
+        gpu_name="Test GPU",
+        gpu_backend="test",
+        total_vram_gb=4.0,
+        free_vram_gb=4.0,
+        has_discrete_gpu=True,
+        cpu_count=8,
+        platform_name="Linux",
+    )
+    req = ModelHardwareRequirements(
+        model_name="Test MoE",
+        total_model_size_gb=18.0,
+        core_heads_size_gb=1.0,
+        moe_experts_size_gb=17.0,
+        ngram_size_gb=0.0,
+        min_ram_required_gb=2.5,
+        recommended_ram_gb=6.0,
+        recommended_vram_gb=2.0,
+    )
+
+    # Request excessive budgets that exceed hardware
+    report = evaluate_compatibility(profile, req, requested_vram_gb=12.0, requested_ram_gb=32.0)
+    assert report.is_compatible is True
+    assert report.effective_vram_budget_gb <= profile.total_vram_gb
+    assert report.effective_ram_budget_gb <= profile.total_ram_gb
+    assert len(report.warnings) >= 2
+
+
+def test_evaluate_compatibility_cpu_fallback_mode():
+    from engine.hardware import (
+        HardwareProfile,
+        ModelHardwareRequirements,
+        evaluate_compatibility,
+    )
+
+    profile = HardwareProfile(
+        total_ram_gb=16.0,
+        available_ram_gb=10.0,
+        used_ram_gb=6.0,
+        ram_utilization_pct=37.5,
+        gpu_detected=False,
+        gpu_name="None (CPU)",
+        gpu_backend="cpu",
+        total_vram_gb=0.0,
+        free_vram_gb=0.0,
+        has_discrete_gpu=False,
+        cpu_count=8,
+        platform_name="Linux",
+    )
+    req = ModelHardwareRequirements(
+        model_name="Test MoE",
+        total_model_size_gb=18.0,
+        core_heads_size_gb=1.0,
+        moe_experts_size_gb=17.0,
+        ngram_size_gb=0.0,
+        min_ram_required_gb=2.5,
+        recommended_ram_gb=6.0,
+        recommended_vram_gb=2.0,
+    )
+
+    report = evaluate_compatibility(profile, req)
+    assert report.is_compatible is True
+    assert report.effective_vram_budget_gb == 0.0
+    assert report.effective_ram_budget_gb > 0.0
+    assert "CPU" in report.offload_strategy
+
+
+def test_layer_splitter_cpu_mode_and_budgets():
+    from unittest.mock import MagicMock
+    from engine.layer_splitter import LayerMemorySplitter
+
+    mock_loader = MagicMock()
+    # 1 GB core tensor, 2 GB expert tensor, 1 GB cold expert
+    mock_loader.tensors = {
+        "blk.0.attn_q.weight": {"n_bytes": 1024 ** 3},
+        "blk.0.ffn_down_exps.weight": {"n_bytes": 2 * (1024 ** 3)},
+        "blk.1.ffn_down_exps.weight": {"n_bytes": 2 * (1024 ** 3)},
+    }
+
+    # Case 1: CPU mode (vram=0, ram=4GB)
+    splitter = LayerMemorySplitter(mock_loader, vram_budget_gb=0.0, ram_budget_gb=4.0)
+    assert len(splitter.vram_tensors) == 0
+    # Core tensor falls back to RAM
+    assert "blk.0.attn_q.weight" in splitter.ram_tensors
+    # One expert fits in remaining RAM (1GB + 2GB = 3GB <= 4GB)
+    assert "blk.0.ffn_down_exps.weight" in splitter.ram_tensors
+    # Other expert goes to SSD
+    assert "blk.1.ffn_down_exps.weight" in splitter.ssd_tensors
+

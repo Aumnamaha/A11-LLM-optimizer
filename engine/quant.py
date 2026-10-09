@@ -1,7 +1,10 @@
 import sys
 import os
+import warnings
 import torch
 import numpy as np
+
+warnings.filterwarnings("ignore", message=".*The given buffer is not writable.*")
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if PROJECT_ROOT not in sys.path:

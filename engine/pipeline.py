@@ -6,7 +6,7 @@ import urllib.request
 import json
 import base64
 import torch
-from typing import Generator
+from typing import Generator, Optional
 from engine.loader import SplitGGUFLoader
 from engine.layer_splitter import LayerMemorySplitter
 from engine.mmap_loader import DirectSSDMmapManager
@@ -16,19 +16,54 @@ from engine.quant import GGUFDequantizer
 from engine.tokenizer import QwenTokenizerManager
 from engine.router import MoERouter
 from engine.sampler import TokenSampler
+from engine.hardware import (
+    detect_hardware,
+    analyze_model_requirements,
+    evaluate_compatibility,
+    print_hardware_and_compatibility_banner,
+)
 
 class A11Pipeline:
-    def __init__(self, model_path: str, vram_budget_gb: float = 12.0, ram_budget_gb: float = 12.0):
+    def __init__(
+        self,
+        model_path: str,
+        vram_budget_gb: Optional[float] = None,
+        ram_budget_gb: Optional[float] = None,
+    ):
         print(f"==========================================================")
         print(f"  A11-LLM-Optimizer Tool & Remote Code Execution Engine   ")
         print(f"==========================================================")
         
         self.loader = SplitGGUFLoader(model_path)
-        self.splitter = LayerMemorySplitter(self.loader, vram_budget_gb, ram_budget_gb)
+
+        # Dynamic Hardware Detection & Compatibility Evaluation
+        self.hardware_profile = detect_hardware()
+        self.model_requirements = analyze_model_requirements(self.loader)
+        self.compatibility_report = evaluate_compatibility(
+            self.hardware_profile,
+            self.model_requirements,
+            requested_vram_gb=vram_budget_gb,
+            requested_ram_gb=ram_budget_gb,
+        )
+        print_hardware_and_compatibility_banner(
+            self.hardware_profile,
+            self.model_requirements,
+            self.compatibility_report,
+        )
+
+        effective_vram = self.compatibility_report.effective_vram_budget_gb
+        effective_ram = self.compatibility_report.effective_ram_budget_gb
+
+        self.splitter = LayerMemorySplitter(
+            self.loader,
+            vram_budget_gb=effective_vram,
+            ram_budget_gb=effective_ram,
+            max_hot_experts=self.compatibility_report.max_hot_experts,
+        )
         self.mmap_mgr = DirectSSDMmapManager(self.loader)
         self.tokenizer = QwenTokenizerManager(model_path)
         
-        self.expert_cache = HotExpertRAMCache(max_hot_experts=350)
+        self.expert_cache = HotExpertRAMCache(max_hot_experts=self.compatibility_report.max_hot_experts)
         self.prefetcher = AsyncPrefetchEngine(self.mmap_mgr)
         self.router = MoERouter(num_experts=512, top_k=8)
         self.sampler = TokenSampler(temperature=0.7, top_k=40, top_p=0.9)
@@ -40,7 +75,11 @@ class A11Pipeline:
         self.last_web_data = None
 
         print(f"[A11-Pipeline] Engine Active | Direct SSD mmap active.")
-        print(f"[A11-Pipeline] Allocation: 12GB VRAM / 12GB System RAM Hot Cache.")
+        print(
+            f"[A11-Pipeline] Allocation: {self.splitter.vram_budget_gb:.1f}GB VRAM / "
+            f"{self.splitter.ram_budget_gb:.1f}GB System RAM Hot Cache "
+            f"({len(self.splitter.ram_tensors)} Hot Experts)."
+        )
 
     def _clean_github_slug(self, raw_str: str) -> str:
         if not raw_str:
@@ -167,7 +206,7 @@ class A11Pipeline:
             elif any(kw in user_lower for kw in ["hello", "hi", "hey"]):
                 response_text = "Hello! A11-LLM-Optimizer is ready with Local/Remote Code Analysis and Direct SSD Offloading."
             else:
-                response_text = f"Query Received: '{user_line}'. Executing MoE expert matrix passes across 12GB System RAM cache."
+                response_text = f"Query Received: '{user_line}'. Executing MoE expert matrix passes across {self.splitter.ram_budget_gb:.1f}GB System RAM cache."
 
         response_tokens = self.tokenizer.encode(response_text)
 
@@ -199,6 +238,14 @@ class A11Pipeline:
 
             token_str = self.tokenizer.decode([token_id])
             yield token_str
+
+    def run_inference_step(self, prompt: str, max_new_tokens: int = 250) -> str:
+        tokens = []
+        for token in self.stream_inference(prompt, max_new_tokens=max_new_tokens):
+            print(token, end="", flush=True)
+            tokens.append(token)
+        print()
+        return "".join(tokens)
 
     def get_cache_stats(self) -> dict:
         return self.expert_cache.get_stats()

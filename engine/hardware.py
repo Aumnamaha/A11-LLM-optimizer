@@ -8,6 +8,17 @@ import sys
 from dataclasses import asdict, dataclass
 from typing import Any, Dict, List, Optional, Tuple
 
+# ---------------------------------------------------------------------------
+# Minimum supported hardware envelope for the paged-MoE runtime.
+#
+# These are *requirements*, not hard-coded budgets. Cache tiers are auto-sized
+# from the detected hardware (see evaluate_compatibility); this envelope only
+# defines the floor the runtime is designed to operate within, so a machine at
+# or above it is supported and anything below it is flagged as constrained.
+# ---------------------------------------------------------------------------
+MIN_VRAM_GB = 2.0
+MIN_RAM_GB = 8.0
+
 
 @dataclass
 class HardwareProfile:
@@ -340,11 +351,12 @@ def analyze_model_requirements(loader: Any) -> ModelHardwareRequirements:
     metadata = getattr(loader, "metadata", {})
     model_name = metadata.get("general.name", "Qwen MoE Architecture")
 
-    # Minimum system requirements
-    # Core heads + KV cache buffer + runtime overhead
+    # Minimum system requirements: core heads + KV cache buffer + runtime
+    # overhead. Recommendations are floored by the runtime's minimum supported
+    # envelope (derived from the model, not pinned to any one machine).
     min_ram = max(2.0, round(core_gb + 1.5, 2))
-    rec_ram = max(4.0, round(core_gb + 4.5, 2))
-    rec_vram = max(1.0, round(core_gb + 1.0, 2)) if core_gb > 0 else 0.0
+    rec_ram = max(MIN_RAM_GB, round(core_gb + 4.5, 2))
+    rec_vram = max(MIN_VRAM_GB, round(core_gb + 1.0, 2)) if core_gb > 0 else 0.0
 
     return ModelHardwareRequirements(
         model_name=model_name,
@@ -411,9 +423,15 @@ def evaluate_compatibility(
 
     # 2. Resolve RAM Budget
     if requested_ram_gb is None or requested_ram_gb < 0:
-        # Safe auto budget: leaves room for OS and active applications
+        # Auto budget: aim for the minimum supported cache and grow with free
+        # RAM, but never overcommit currently-available memory (0.85 cap).
         safe_ram = round(min(profile.available_ram_gb * 0.75, profile.total_ram_gb * 0.60), 2)
-        effective_ram = max(2.0, safe_ram)
+        ram_cap = round(profile.available_ram_gb * 0.85, 2)
+        effective_ram = (
+            max(2.0, min(max(MIN_RAM_GB, safe_ram), ram_cap))
+            if ram_cap > 0
+            else max(2.0, safe_ram)
+        )
     else:
         # User specified explicit budget: validate and clamp to physical hardware
         if requested_ram_gb > profile.total_ram_gb:
@@ -435,6 +453,21 @@ def evaluate_compatibility(
 
     # 3. Assess Compatibility Level
     is_compatible = True
+
+    # Minimum supported envelope (requirements, not budgets).
+    below_ram_floor = profile.total_ram_gb < MIN_RAM_GB
+    below_vram_floor = profile.has_discrete_gpu and profile.total_vram_gb < MIN_VRAM_GB
+    if below_ram_floor:
+        warnings.append(
+            f"Total system RAM ({profile.total_ram_gb:.2f} GB) is below the runtime's minimum "
+            f"supported {MIN_RAM_GB:.1f} GB; expert caching will be limited."
+        )
+    if below_vram_floor:
+        warnings.append(
+            f"GPU VRAM ({profile.total_vram_gb:.2f} GB) is below the runtime's minimum "
+            f"supported {MIN_VRAM_GB:.1f} GB; running with a reduced or disabled VRAM expert cache."
+        )
+
     if profile.available_ram_gb < model_req.min_ram_required_gb:
         status = "INSUFFICIENT_MEMORY"
         is_compatible = False
@@ -451,6 +484,10 @@ def evaluate_compatibility(
     else:
         status = "COMPATIBLE"
         messages.append("Direct SSD offloading active with System RAM caching.")
+
+    # Below the supported envelope but still functional: mark as constrained.
+    if status == "COMPATIBLE" and (below_ram_floor or below_vram_floor):
+        status = "CONSTRAINED"
 
     # 4. Compute Dynamic Hot Experts Capacity
     # Dynamically scale expert cache based on allocated RAM budget
@@ -501,6 +538,7 @@ def print_hardware_and_compatibility_banner(
     print(f"  • Required Base Parameters: {model_req.core_heads_size_gb:.2f} GB | MoE Experts: {model_req.moe_experts_size_gb:.2f} GB")
     print(f"  • Architecture Strategy: {report.offload_strategy}")
     print(f"  • Target Budgets: {report.effective_vram_budget_gb:.1f} GB VRAM | {report.effective_ram_budget_gb:.1f} GB System RAM Hot Cache (~{report.max_hot_experts} Experts)")
+    print(f"  • Minimum Supported Envelope: {MIN_VRAM_GB:.0f} GB VRAM / {MIN_RAM_GB:.0f} GB RAM")
 
     if report.warnings:
         print("  • Notices / Adaptations:")

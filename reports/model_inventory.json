@@ -1,0 +1,7492 @@
+{
+  "model_dir": "/home/knk/Projects/A11-LLM-optimizer/models/Qwen3-30B-A3B",
+  "shards": [
+    "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf"
+  ],
+  "config": {
+    "model_name": "Qwen3-30B-A3B-Instruct-2507",
+    "arch": "qwen3moe",
+    "n_layer": 48,
+    "n_embd": 2048,
+    "n_head": 32,
+    "n_head_kv": 4,
+    "head_dim": 128,
+    "n_expert": 128,
+    "n_expert_used": 8,
+    "expert_ffn": 768,
+    "ffn": 6144,
+    "rope_base": 10000000.0,
+    "rms_eps": 1e-06,
+    "ctx_length": 8192,
+    "vocab_size": 151936,
+    "eos_token_id": 151645
+  },
+  "totals": {
+    "total_bytes": 18550716416,
+    "resident_bytes": 997554176,
+    "expert_bytes": 17553162240,
+    "expert_percent": 94.62,
+    "resident_percent": 5.38,
+    "tensor_count": 579,
+    "resident_tensor_count": 435,
+    "expert_tensor_count": 144
+  },
+  "expert_bytes_per_kind": {
+    "down": 6681526272,
+    "gate": 5435817984,
+    "up": 5435817984
+  },
+  "per_layer_per_expert_bytes": {
+    "down": 1087488,
+    "gate": 884736,
+    "up": 884736
+  },
+  "layers": [
+    {
+      "layer": -1,
+      "resident": 430290944,
+      "expert": 0
+    },
+    {
+      "layer": 0,
+      "resident": 11953152,
+      "expert": 391643136
+    },
+    {
+      "layer": 1,
+      "resident": 11953152,
+      "expert": 391643136
+    },
+    {
+      "layer": 2,
+      "resident": 11953152,
+      "expert": 391643136
+    },
+    {
+      "layer": 3,
+      "resident": 11953152,
+      "expert": 391643136
+    },
+    {
+      "layer": 4,
+      "resident": 11953152,
+      "expert": 391643136
+    },
+    {
+      "layer": 5,
+      "resident": 11953152,
+      "expert": 391643136
+    },
+    {
+      "layer": 6,
+      "resident": 11682816,
+      "expert": 339738624
+    },
+    {
+      "layer": 7,
+      "resident": 11682816,
+      "expert": 339738624
+    },
+    {
+      "layer": 8,
+      "resident": 11953152,
+      "expert": 391643136
+    },
+    {
+      "layer": 9,
+      "resident": 11682816,
+      "expert": 339738624
+    },
+    {
+      "layer": 10,
+      "resident": 11682816,
+      "expert": 339738624
+    },
+    {
+      "layer": 11,
+      "resident": 11953152,
+      "expert": 391643136
+    },
+    {
+      "layer": 12,
+      "resident": 11682816,
+      "expert": 339738624
+    },
+    {
+      "layer": 13,
+      "resident": 11682816,
+      "expert": 339738624
+    },
+    {
+      "layer": 14,
+      "resident": 11953152,
+      "expert": 391643136
+    },
+    {
+      "layer": 15,
+      "resident": 11682816,
+      "expert": 339738624
+    },
+    {
+      "layer": 16,
+      "resident": 11682816,
+      "expert": 339738624
+    },
+    {
+      "layer": 17,
+      "resident": 11953152,
+      "expert": 391643136
+    },
+    {
+      "layer": 18,
+      "resident": 11682816,
+      "expert": 339738624
+    },
+    {
+      "layer": 19,
+      "resident": 11682816,
+      "expert": 339738624
+    },
+    {
+      "layer": 20,
+      "resident": 11953152,
+      "expert": 391643136
+    },
+    {
+      "layer": 21,
+      "resident": 11682816,
+      "expert": 339738624
+    },
+    {
+      "layer": 22,
+      "resident": 11682816,
+      "expert": 339738624
+    },
+    {
+      "layer": 23,
+      "resident": 11953152,
+      "expert": 391643136
+    },
+    {
+      "layer": 24,
+      "resident": 11682816,
+      "expert": 339738624
+    },
+    {
+      "layer": 25,
+      "resident": 11682816,
+      "expert": 339738624
+    },
+    {
+      "layer": 26,
+      "resident": 11953152,
+      "expert": 391643136
+    },
+    {
+      "layer": 27,
+      "resident": 11682816,
+      "expert": 339738624
+    },
+    {
+      "layer": 28,
+      "resident": 11682816,
+      "expert": 339738624
+    },
+    {
+      "layer": 29,
+      "resident": 11953152,
+      "expert": 391643136
+    },
+    {
+      "layer": 30,
+      "resident": 11682816,
+      "expert": 339738624
+    },
+    {
+      "layer": 31,
+      "resident": 11682816,
+      "expert": 339738624
+    },
+    {
+      "layer": 32,
+      "resident": 11953152,
+      "expert": 391643136
+    },
+    {
+      "layer": 33,
+      "resident": 11682816,
+      "expert": 339738624
+    },
+    {
+      "layer": 34,
+      "resident": 11682816,
+      "expert": 339738624
+    },
+    {
+      "layer": 35,
+      "resident": 11953152,
+      "expert": 391643136
+    },
+    {
+      "layer": 36,
+      "resident": 11682816,
+      "expert": 339738624
+    },
+    {
+      "layer": 37,
+      "resident": 11682816,
+      "expert": 339738624
+    },
+    {
+      "layer": 38,
+      "resident": 11953152,
+      "expert": 391643136
+    },
+    {
+      "layer": 39,
+      "resident": 11682816,
+      "expert": 339738624
+    },
+    {
+      "layer": 40,
+      "resident": 11682816,
+      "expert": 339738624
+    },
+    {
+      "layer": 41,
+      "resident": 11953152,
+      "expert": 391643136
+    },
+    {
+      "layer": 42,
+      "resident": 11953152,
+      "expert": 391643136
+    },
+    {
+      "layer": 43,
+      "resident": 11953152,
+      "expert": 391643136
+    },
+    {
+      "layer": 44,
+      "resident": 11953152,
+      "expert": 391643136
+    },
+    {
+      "layer": 45,
+      "resident": 11953152,
+      "expert": 391643136
+    },
+    {
+      "layer": 46,
+      "resident": 11953152,
+      "expert": 391643136
+    },
+    {
+      "layer": 47,
+      "resident": 11953152,
+      "expert": 391643136
+    }
+  ],
+  "page_model": {
+    "page_size_bytes": 2097152,
+    "page_size_mib": 2.0,
+    "total_pages": 18432,
+    "pages_per_expert": 1,
+    "mapped_bytes": 17553162240,
+    "page_capacity_bytes": 38654705664,
+    "page_table_bytes_estimate": 1179648,
+    "page_capacity_utilization": 0.4541
+  },
+  "resident": [
+    {
+      "name": "output.weight",
+      "layer": null,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        151936
+      ],
+      "type": "14",
+      "n_bytes": 255252480,
+      "offset": 5970336
+    },
+    {
+      "name": "token_embd.weight",
+      "layer": null,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        151936
+      ],
+      "type": "12",
+      "n_bytes": 175030272,
+      "offset": 261231008
+    },
+    {
+      "name": "blk.0.attn_output.weight",
+      "layer": 0,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 436859808
+    },
+    {
+      "name": "blk.0.attn_q.weight",
+      "layer": 0,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 441578400
+    },
+    {
+      "name": "blk.1.attn_output.weight",
+      "layer": 1,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 840456096
+    },
+    {
+      "name": "blk.1.attn_q.weight",
+      "layer": 1,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 845174688
+    },
+    {
+      "name": "blk.2.attn_output.weight",
+      "layer": 2,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 1244052384
+    },
+    {
+      "name": "blk.2.attn_q.weight",
+      "layer": 2,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 1248770976
+    },
+    {
+      "name": "blk.3.attn_output.weight",
+      "layer": 3,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 1647648672
+    },
+    {
+      "name": "blk.3.attn_q.weight",
+      "layer": 3,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 1652367264
+    },
+    {
+      "name": "blk.4.attn_output.weight",
+      "layer": 4,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 2051244960
+    },
+    {
+      "name": "blk.4.attn_q.weight",
+      "layer": 4,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 2055963552
+    },
+    {
+      "name": "blk.5.attn_output.weight",
+      "layer": 5,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 2454841248
+    },
+    {
+      "name": "blk.5.attn_q.weight",
+      "layer": 5,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 2459559840
+    },
+    {
+      "name": "blk.6.attn_output.weight",
+      "layer": 6,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 2858437536
+    },
+    {
+      "name": "blk.6.attn_q.weight",
+      "layer": 6,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 2863156128
+    },
+    {
+      "name": "blk.7.attn_output.weight",
+      "layer": 7,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 3209858976
+    },
+    {
+      "name": "blk.7.attn_q.weight",
+      "layer": 7,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 3214577568
+    },
+    {
+      "name": "blk.8.attn_output.weight",
+      "layer": 8,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 3561280416
+    },
+    {
+      "name": "blk.8.attn_q.weight",
+      "layer": 8,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 3565999008
+    },
+    {
+      "name": "blk.9.attn_output.weight",
+      "layer": 9,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 3964876704
+    },
+    {
+      "name": "blk.9.attn_q.weight",
+      "layer": 9,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 3969595296
+    },
+    {
+      "name": "blk.10.attn_output.weight",
+      "layer": 10,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 4316298144
+    },
+    {
+      "name": "blk.10.attn_q.weight",
+      "layer": 10,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 4321016736
+    },
+    {
+      "name": "blk.11.attn_output.weight",
+      "layer": 11,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 4667719584
+    },
+    {
+      "name": "blk.11.attn_q.weight",
+      "layer": 11,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 4672438176
+    },
+    {
+      "name": "blk.12.attn_output.weight",
+      "layer": 12,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 5071315872
+    },
+    {
+      "name": "blk.12.attn_q.weight",
+      "layer": 12,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 5076034464
+    },
+    {
+      "name": "blk.13.attn_output.weight",
+      "layer": 13,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 5422737312
+    },
+    {
+      "name": "blk.13.attn_q.weight",
+      "layer": 13,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 5427455904
+    },
+    {
+      "name": "blk.14.attn_output.weight",
+      "layer": 14,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 5774158752
+    },
+    {
+      "name": "blk.14.attn_q.weight",
+      "layer": 14,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 5778877344
+    },
+    {
+      "name": "blk.15.attn_output.weight",
+      "layer": 15,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 6177755040
+    },
+    {
+      "name": "blk.15.attn_q.weight",
+      "layer": 15,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 6182473632
+    },
+    {
+      "name": "blk.16.attn_output.weight",
+      "layer": 16,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 6529176480
+    },
+    {
+      "name": "blk.16.attn_q.weight",
+      "layer": 16,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 6533895072
+    },
+    {
+      "name": "blk.17.attn_output.weight",
+      "layer": 17,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 6880597920
+    },
+    {
+      "name": "blk.17.attn_q.weight",
+      "layer": 17,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 6885316512
+    },
+    {
+      "name": "blk.18.attn_output.weight",
+      "layer": 18,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 7284194208
+    },
+    {
+      "name": "blk.18.attn_q.weight",
+      "layer": 18,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 7288912800
+    },
+    {
+      "name": "blk.19.attn_output.weight",
+      "layer": 19,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 7635615648
+    },
+    {
+      "name": "blk.19.attn_q.weight",
+      "layer": 19,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 7640334240
+    },
+    {
+      "name": "blk.20.attn_output.weight",
+      "layer": 20,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 7987037088
+    },
+    {
+      "name": "blk.20.attn_q.weight",
+      "layer": 20,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 7991755680
+    },
+    {
+      "name": "blk.21.attn_output.weight",
+      "layer": 21,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 8390633376
+    },
+    {
+      "name": "blk.21.attn_q.weight",
+      "layer": 21,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 8395351968
+    },
+    {
+      "name": "blk.22.attn_output.weight",
+      "layer": 22,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 8742054816
+    },
+    {
+      "name": "blk.22.attn_q.weight",
+      "layer": 22,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 8746773408
+    },
+    {
+      "name": "blk.23.attn_output.weight",
+      "layer": 23,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 9093476256
+    },
+    {
+      "name": "blk.23.attn_q.weight",
+      "layer": 23,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 9098194848
+    },
+    {
+      "name": "blk.24.attn_output.weight",
+      "layer": 24,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 9497072544
+    },
+    {
+      "name": "blk.24.attn_q.weight",
+      "layer": 24,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 9501791136
+    },
+    {
+      "name": "blk.25.attn_output.weight",
+      "layer": 25,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 9848493984
+    },
+    {
+      "name": "blk.25.attn_q.weight",
+      "layer": 25,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 9853212576
+    },
+    {
+      "name": "blk.26.attn_output.weight",
+      "layer": 26,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 10199915424
+    },
+    {
+      "name": "blk.26.attn_q.weight",
+      "layer": 26,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 10204634016
+    },
+    {
+      "name": "blk.27.attn_output.weight",
+      "layer": 27,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 10603511712
+    },
+    {
+      "name": "blk.27.attn_q.weight",
+      "layer": 27,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 10608230304
+    },
+    {
+      "name": "blk.28.attn_output.weight",
+      "layer": 28,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 10954933152
+    },
+    {
+      "name": "blk.28.attn_q.weight",
+      "layer": 28,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 10959651744
+    },
+    {
+      "name": "blk.29.attn_output.weight",
+      "layer": 29,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 11306354592
+    },
+    {
+      "name": "blk.29.attn_q.weight",
+      "layer": 29,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 11311073184
+    },
+    {
+      "name": "blk.30.attn_output.weight",
+      "layer": 30,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 11709950880
+    },
+    {
+      "name": "blk.30.attn_q.weight",
+      "layer": 30,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 11714669472
+    },
+    {
+      "name": "blk.31.attn_output.weight",
+      "layer": 31,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 12061372320
+    },
+    {
+      "name": "blk.31.attn_q.weight",
+      "layer": 31,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 12066090912
+    },
+    {
+      "name": "blk.32.attn_output.weight",
+      "layer": 32,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 12412793760
+    },
+    {
+      "name": "blk.32.attn_q.weight",
+      "layer": 32,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 12417512352
+    },
+    {
+      "name": "blk.33.attn_output.weight",
+      "layer": 33,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 12816390048
+    },
+    {
+      "name": "blk.33.attn_q.weight",
+      "layer": 33,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 12821108640
+    },
+    {
+      "name": "blk.34.attn_output.weight",
+      "layer": 34,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 13167811488
+    },
+    {
+      "name": "blk.34.attn_q.weight",
+      "layer": 34,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 13172530080
+    },
+    {
+      "name": "blk.35.attn_output.weight",
+      "layer": 35,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 13519232928
+    },
+    {
+      "name": "blk.35.attn_q.weight",
+      "layer": 35,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 13523951520
+    },
+    {
+      "name": "blk.36.attn_output.weight",
+      "layer": 36,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 13922829216
+    },
+    {
+      "name": "blk.36.attn_q.weight",
+      "layer": 36,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 13927547808
+    },
+    {
+      "name": "blk.37.attn_output.weight",
+      "layer": 37,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 14274250656
+    },
+    {
+      "name": "blk.37.attn_q.weight",
+      "layer": 37,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 14278969248
+    },
+    {
+      "name": "blk.38.attn_output.weight",
+      "layer": 38,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 14625672096
+    },
+    {
+      "name": "blk.38.attn_q.weight",
+      "layer": 38,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 14630390688
+    },
+    {
+      "name": "blk.39.attn_output.weight",
+      "layer": 39,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 15029268384
+    },
+    {
+      "name": "blk.39.attn_q.weight",
+      "layer": 39,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 15033986976
+    },
+    {
+      "name": "blk.40.attn_output.weight",
+      "layer": 40,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 15380689824
+    },
+    {
+      "name": "blk.40.attn_q.weight",
+      "layer": 40,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 15385408416
+    },
+    {
+      "name": "blk.41.attn_output.weight",
+      "layer": 41,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 15732111264
+    },
+    {
+      "name": "blk.41.attn_q.weight",
+      "layer": 41,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 15736829856
+    },
+    {
+      "name": "blk.42.attn_output.weight",
+      "layer": 42,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 16135707552
+    },
+    {
+      "name": "blk.42.attn_q.weight",
+      "layer": 42,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 16140426144
+    },
+    {
+      "name": "blk.43.attn_output.weight",
+      "layer": 43,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 16539303840
+    },
+    {
+      "name": "blk.43.attn_q.weight",
+      "layer": 43,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 16544022432
+    },
+    {
+      "name": "blk.44.attn_output.weight",
+      "layer": 44,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 16942900128
+    },
+    {
+      "name": "blk.44.attn_q.weight",
+      "layer": 44,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 16947618720
+    },
+    {
+      "name": "blk.45.attn_output.weight",
+      "layer": 45,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 17346496416
+    },
+    {
+      "name": "blk.45.attn_q.weight",
+      "layer": 45,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 17351215008
+    },
+    {
+      "name": "blk.46.attn_output.weight",
+      "layer": 46,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 17750092704
+    },
+    {
+      "name": "blk.46.attn_q.weight",
+      "layer": 46,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 17754811296
+    },
+    {
+      "name": "blk.47.attn_output.weight",
+      "layer": 47,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        4096,
+        2048
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 18153688992
+    },
+    {
+      "name": "blk.47.attn_q.weight",
+      "layer": 47,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        4096
+      ],
+      "type": "12",
+      "n_bytes": 4718592,
+      "offset": 18158407584
+    },
+    {
+      "name": "blk.0.ffn_gate_inp.weight",
+      "layer": 0,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 725554592
+    },
+    {
+      "name": "blk.1.ffn_gate_inp.weight",
+      "layer": 1,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 1129150880
+    },
+    {
+      "name": "blk.2.ffn_gate_inp.weight",
+      "layer": 2,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 1532747168
+    },
+    {
+      "name": "blk.3.ffn_gate_inp.weight",
+      "layer": 3,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 1936343456
+    },
+    {
+      "name": "blk.4.ffn_gate_inp.weight",
+      "layer": 4,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 2339939744
+    },
+    {
+      "name": "blk.5.ffn_gate_inp.weight",
+      "layer": 5,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 2743536032
+    },
+    {
+      "name": "blk.6.ffn_gate_inp.weight",
+      "layer": 6,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 3094957472
+    },
+    {
+      "name": "blk.7.ffn_gate_inp.weight",
+      "layer": 7,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 3446378912
+    },
+    {
+      "name": "blk.8.ffn_gate_inp.weight",
+      "layer": 8,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 3849975200
+    },
+    {
+      "name": "blk.9.ffn_gate_inp.weight",
+      "layer": 9,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 4201396640
+    },
+    {
+      "name": "blk.10.ffn_gate_inp.weight",
+      "layer": 10,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 4552818080
+    },
+    {
+      "name": "blk.11.ffn_gate_inp.weight",
+      "layer": 11,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 4956414368
+    },
+    {
+      "name": "blk.12.ffn_gate_inp.weight",
+      "layer": 12,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 5307835808
+    },
+    {
+      "name": "blk.13.ffn_gate_inp.weight",
+      "layer": 13,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 5659257248
+    },
+    {
+      "name": "blk.14.ffn_gate_inp.weight",
+      "layer": 14,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 6062853536
+    },
+    {
+      "name": "blk.15.ffn_gate_inp.weight",
+      "layer": 15,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 6414274976
+    },
+    {
+      "name": "blk.16.ffn_gate_inp.weight",
+      "layer": 16,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 6765696416
+    },
+    {
+      "name": "blk.17.ffn_gate_inp.weight",
+      "layer": 17,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 7169292704
+    },
+    {
+      "name": "blk.18.ffn_gate_inp.weight",
+      "layer": 18,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 7520714144
+    },
+    {
+      "name": "blk.19.ffn_gate_inp.weight",
+      "layer": 19,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 7872135584
+    },
+    {
+      "name": "blk.20.ffn_gate_inp.weight",
+      "layer": 20,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 8275731872
+    },
+    {
+      "name": "blk.21.ffn_gate_inp.weight",
+      "layer": 21,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 8627153312
+    },
+    {
+      "name": "blk.22.ffn_gate_inp.weight",
+      "layer": 22,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 8978574752
+    },
+    {
+      "name": "blk.23.ffn_gate_inp.weight",
+      "layer": 23,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 9382171040
+    },
+    {
+      "name": "blk.24.ffn_gate_inp.weight",
+      "layer": 24,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 9733592480
+    },
+    {
+      "name": "blk.25.ffn_gate_inp.weight",
+      "layer": 25,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 10085013920
+    },
+    {
+      "name": "blk.26.ffn_gate_inp.weight",
+      "layer": 26,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 10488610208
+    },
+    {
+      "name": "blk.27.ffn_gate_inp.weight",
+      "layer": 27,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 10840031648
+    },
+    {
+      "name": "blk.28.ffn_gate_inp.weight",
+      "layer": 28,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 11191453088
+    },
+    {
+      "name": "blk.29.ffn_gate_inp.weight",
+      "layer": 29,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 11595049376
+    },
+    {
+      "name": "blk.30.ffn_gate_inp.weight",
+      "layer": 30,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 11946470816
+    },
+    {
+      "name": "blk.31.ffn_gate_inp.weight",
+      "layer": 31,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 12297892256
+    },
+    {
+      "name": "blk.32.ffn_gate_inp.weight",
+      "layer": 32,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 12701488544
+    },
+    {
+      "name": "blk.33.ffn_gate_inp.weight",
+      "layer": 33,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 13052909984
+    },
+    {
+      "name": "blk.34.ffn_gate_inp.weight",
+      "layer": 34,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 13404331424
+    },
+    {
+      "name": "blk.35.ffn_gate_inp.weight",
+      "layer": 35,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 13807927712
+    },
+    {
+      "name": "blk.36.ffn_gate_inp.weight",
+      "layer": 36,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 14159349152
+    },
+    {
+      "name": "blk.37.ffn_gate_inp.weight",
+      "layer": 37,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 14510770592
+    },
+    {
+      "name": "blk.38.ffn_gate_inp.weight",
+      "layer": 38,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 14914366880
+    },
+    {
+      "name": "blk.39.ffn_gate_inp.weight",
+      "layer": 39,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 15265788320
+    },
+    {
+      "name": "blk.40.ffn_gate_inp.weight",
+      "layer": 40,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 15617209760
+    },
+    {
+      "name": "blk.41.ffn_gate_inp.weight",
+      "layer": 41,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 16020806048
+    },
+    {
+      "name": "blk.42.ffn_gate_inp.weight",
+      "layer": 42,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 16424402336
+    },
+    {
+      "name": "blk.43.ffn_gate_inp.weight",
+      "layer": 43,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 16827998624
+    },
+    {
+      "name": "blk.44.ffn_gate_inp.weight",
+      "layer": 44,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 17231594912
+    },
+    {
+      "name": "blk.45.ffn_gate_inp.weight",
+      "layer": 45,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 17635191200
+    },
+    {
+      "name": "blk.46.ffn_gate_inp.weight",
+      "layer": 46,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 18038787488
+    },
+    {
+      "name": "blk.47.ffn_gate_inp.weight",
+      "layer": 47,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        128
+      ],
+      "type": "0",
+      "n_bytes": 1048576,
+      "offset": 18442383776
+    },
+    {
+      "name": "blk.0.attn_v.weight",
+      "layer": 0,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "14",
+      "n_bytes": 860160,
+      "offset": 446297504
+    },
+    {
+      "name": "blk.1.attn_v.weight",
+      "layer": 1,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "14",
+      "n_bytes": 860160,
+      "offset": 849893792
+    },
+    {
+      "name": "blk.2.attn_v.weight",
+      "layer": 2,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "14",
+      "n_bytes": 860160,
+      "offset": 1253490080
+    },
+    {
+      "name": "blk.3.attn_v.weight",
+      "layer": 3,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "14",
+      "n_bytes": 860160,
+      "offset": 1657086368
+    },
+    {
+      "name": "blk.4.attn_v.weight",
+      "layer": 4,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "14",
+      "n_bytes": 860160,
+      "offset": 2060682656
+    },
+    {
+      "name": "blk.5.attn_v.weight",
+      "layer": 5,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "14",
+      "n_bytes": 860160,
+      "offset": 2464278944
+    },
+    {
+      "name": "blk.8.attn_v.weight",
+      "layer": 8,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "14",
+      "n_bytes": 860160,
+      "offset": 3570718112
+    },
+    {
+      "name": "blk.11.attn_v.weight",
+      "layer": 11,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "14",
+      "n_bytes": 860160,
+      "offset": 4677157280
+    },
+    {
+      "name": "blk.14.attn_v.weight",
+      "layer": 14,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "14",
+      "n_bytes": 860160,
+      "offset": 5783596448
+    },
+    {
+      "name": "blk.17.attn_v.weight",
+      "layer": 17,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "14",
+      "n_bytes": 860160,
+      "offset": 6890035616
+    },
+    {
+      "name": "blk.20.attn_v.weight",
+      "layer": 20,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "14",
+      "n_bytes": 860160,
+      "offset": 7996474784
+    },
+    {
+      "name": "blk.23.attn_v.weight",
+      "layer": 23,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "14",
+      "n_bytes": 860160,
+      "offset": 9102913952
+    },
+    {
+      "name": "blk.26.attn_v.weight",
+      "layer": 26,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "14",
+      "n_bytes": 860160,
+      "offset": 10209353120
+    },
+    {
+      "name": "blk.29.attn_v.weight",
+      "layer": 29,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "14",
+      "n_bytes": 860160,
+      "offset": 11315792288
+    },
+    {
+      "name": "blk.32.attn_v.weight",
+      "layer": 32,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "14",
+      "n_bytes": 860160,
+      "offset": 12422231456
+    },
+    {
+      "name": "blk.35.attn_v.weight",
+      "layer": 35,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "14",
+      "n_bytes": 860160,
+      "offset": 13528670624
+    },
+    {
+      "name": "blk.38.attn_v.weight",
+      "layer": 38,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "14",
+      "n_bytes": 860160,
+      "offset": 14635109792
+    },
+    {
+      "name": "blk.41.attn_v.weight",
+      "layer": 41,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "14",
+      "n_bytes": 860160,
+      "offset": 15741548960
+    },
+    {
+      "name": "blk.42.attn_v.weight",
+      "layer": 42,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "14",
+      "n_bytes": 860160,
+      "offset": 16145145248
+    },
+    {
+      "name": "blk.43.attn_v.weight",
+      "layer": 43,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "14",
+      "n_bytes": 860160,
+      "offset": 16548741536
+    },
+    {
+      "name": "blk.44.attn_v.weight",
+      "layer": 44,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "14",
+      "n_bytes": 860160,
+      "offset": 16952337824
+    },
+    {
+      "name": "blk.45.attn_v.weight",
+      "layer": 45,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "14",
+      "n_bytes": 860160,
+      "offset": 17355934112
+    },
+    {
+      "name": "blk.46.attn_v.weight",
+      "layer": 46,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "14",
+      "n_bytes": 860160,
+      "offset": 17759530400
+    },
+    {
+      "name": "blk.47.attn_v.weight",
+      "layer": 47,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "14",
+      "n_bytes": 860160,
+      "offset": 18163126688
+    },
+    {
+      "name": "blk.0.attn_k.weight",
+      "layer": 0,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 436261280
+    },
+    {
+      "name": "blk.1.attn_k.weight",
+      "layer": 1,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 839857568
+    },
+    {
+      "name": "blk.2.attn_k.weight",
+      "layer": 2,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 1243453856
+    },
+    {
+      "name": "blk.3.attn_k.weight",
+      "layer": 3,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 1647050144
+    },
+    {
+      "name": "blk.4.attn_k.weight",
+      "layer": 4,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 2050646432
+    },
+    {
+      "name": "blk.5.attn_k.weight",
+      "layer": 5,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 2454242720
+    },
+    {
+      "name": "blk.6.attn_k.weight",
+      "layer": 6,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 2857839008
+    },
+    {
+      "name": "blk.6.attn_v.weight",
+      "layer": 6,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 2867875232
+    },
+    {
+      "name": "blk.7.attn_k.weight",
+      "layer": 7,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 3209260448
+    },
+    {
+      "name": "blk.7.attn_v.weight",
+      "layer": 7,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 3219296672
+    },
+    {
+      "name": "blk.8.attn_k.weight",
+      "layer": 8,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 3560681888
+    },
+    {
+      "name": "blk.9.attn_k.weight",
+      "layer": 9,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 3964278176
+    },
+    {
+      "name": "blk.9.attn_v.weight",
+      "layer": 9,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 3974314400
+    },
+    {
+      "name": "blk.10.attn_k.weight",
+      "layer": 10,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 4315699616
+    },
+    {
+      "name": "blk.10.attn_v.weight",
+      "layer": 10,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 4325735840
+    },
+    {
+      "name": "blk.11.attn_k.weight",
+      "layer": 11,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 4667121056
+    },
+    {
+      "name": "blk.12.attn_k.weight",
+      "layer": 12,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 5070717344
+    },
+    {
+      "name": "blk.12.attn_v.weight",
+      "layer": 12,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 5080753568
+    },
+    {
+      "name": "blk.13.attn_k.weight",
+      "layer": 13,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 5422138784
+    },
+    {
+      "name": "blk.13.attn_v.weight",
+      "layer": 13,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 5432175008
+    },
+    {
+      "name": "blk.14.attn_k.weight",
+      "layer": 14,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 5773560224
+    },
+    {
+      "name": "blk.15.attn_k.weight",
+      "layer": 15,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 6177156512
+    },
+    {
+      "name": "blk.15.attn_v.weight",
+      "layer": 15,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 6187192736
+    },
+    {
+      "name": "blk.16.attn_k.weight",
+      "layer": 16,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 6528577952
+    },
+    {
+      "name": "blk.16.attn_v.weight",
+      "layer": 16,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 6538614176
+    },
+    {
+      "name": "blk.17.attn_k.weight",
+      "layer": 17,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 6879999392
+    },
+    {
+      "name": "blk.18.attn_k.weight",
+      "layer": 18,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 7283595680
+    },
+    {
+      "name": "blk.18.attn_v.weight",
+      "layer": 18,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 7293631904
+    },
+    {
+      "name": "blk.19.attn_k.weight",
+      "layer": 19,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 7635017120
+    },
+    {
+      "name": "blk.19.attn_v.weight",
+      "layer": 19,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 7645053344
+    },
+    {
+      "name": "blk.20.attn_k.weight",
+      "layer": 20,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 7986438560
+    },
+    {
+      "name": "blk.21.attn_k.weight",
+      "layer": 21,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 8390034848
+    },
+    {
+      "name": "blk.21.attn_v.weight",
+      "layer": 21,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 8400071072
+    },
+    {
+      "name": "blk.22.attn_k.weight",
+      "layer": 22,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 8741456288
+    },
+    {
+      "name": "blk.22.attn_v.weight",
+      "layer": 22,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 8751492512
+    },
+    {
+      "name": "blk.23.attn_k.weight",
+      "layer": 23,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 9092877728
+    },
+    {
+      "name": "blk.24.attn_k.weight",
+      "layer": 24,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 9496474016
+    },
+    {
+      "name": "blk.24.attn_v.weight",
+      "layer": 24,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 9506510240
+    },
+    {
+      "name": "blk.25.attn_k.weight",
+      "layer": 25,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 9847895456
+    },
+    {
+      "name": "blk.25.attn_v.weight",
+      "layer": 25,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 9857931680
+    },
+    {
+      "name": "blk.26.attn_k.weight",
+      "layer": 26,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 10199316896
+    },
+    {
+      "name": "blk.27.attn_k.weight",
+      "layer": 27,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 10602913184
+    },
+    {
+      "name": "blk.27.attn_v.weight",
+      "layer": 27,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 10612949408
+    },
+    {
+      "name": "blk.28.attn_k.weight",
+      "layer": 28,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 10954334624
+    },
+    {
+      "name": "blk.28.attn_v.weight",
+      "layer": 28,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 10964370848
+    },
+    {
+      "name": "blk.29.attn_k.weight",
+      "layer": 29,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 11305756064
+    },
+    {
+      "name": "blk.30.attn_k.weight",
+      "layer": 30,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 11709352352
+    },
+    {
+      "name": "blk.30.attn_v.weight",
+      "layer": 30,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 11719388576
+    },
+    {
+      "name": "blk.31.attn_k.weight",
+      "layer": 31,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 12060773792
+    },
+    {
+      "name": "blk.31.attn_v.weight",
+      "layer": 31,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 12070810016
+    },
+    {
+      "name": "blk.32.attn_k.weight",
+      "layer": 32,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 12412195232
+    },
+    {
+      "name": "blk.33.attn_k.weight",
+      "layer": 33,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 12815791520
+    },
+    {
+      "name": "blk.33.attn_v.weight",
+      "layer": 33,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 12825827744
+    },
+    {
+      "name": "blk.34.attn_k.weight",
+      "layer": 34,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 13167212960
+    },
+    {
+      "name": "blk.34.attn_v.weight",
+      "layer": 34,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 13177249184
+    },
+    {
+      "name": "blk.35.attn_k.weight",
+      "layer": 35,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 13518634400
+    },
+    {
+      "name": "blk.36.attn_k.weight",
+      "layer": 36,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 13922230688
+    },
+    {
+      "name": "blk.36.attn_v.weight",
+      "layer": 36,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 13932266912
+    },
+    {
+      "name": "blk.37.attn_k.weight",
+      "layer": 37,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 14273652128
+    },
+    {
+      "name": "blk.37.attn_v.weight",
+      "layer": 37,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 14283688352
+    },
+    {
+      "name": "blk.38.attn_k.weight",
+      "layer": 38,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 14625073568
+    },
+    {
+      "name": "blk.39.attn_k.weight",
+      "layer": 39,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 15028669856
+    },
+    {
+      "name": "blk.39.attn_v.weight",
+      "layer": 39,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 15038706080
+    },
+    {
+      "name": "blk.40.attn_k.weight",
+      "layer": 40,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 15380091296
+    },
+    {
+      "name": "blk.40.attn_v.weight",
+      "layer": 40,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 15390127520
+    },
+    {
+      "name": "blk.41.attn_k.weight",
+      "layer": 41,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 15731512736
+    },
+    {
+      "name": "blk.42.attn_k.weight",
+      "layer": 42,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 16135109024
+    },
+    {
+      "name": "blk.43.attn_k.weight",
+      "layer": 43,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 16538705312
+    },
+    {
+      "name": "blk.44.attn_k.weight",
+      "layer": 44,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 16942301600
+    },
+    {
+      "name": "blk.45.attn_k.weight",
+      "layer": 45,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 17345897888
+    },
+    {
+      "name": "blk.46.attn_k.weight",
+      "layer": 46,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 17749494176
+    },
+    {
+      "name": "blk.47.attn_k.weight",
+      "layer": 47,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        512
+      ],
+      "type": "12",
+      "n_bytes": 589824,
+      "offset": 18153090464
+    },
+    {
+      "name": "output_norm.weight",
+      "layer": null,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 261222816
+    },
+    {
+      "name": "blk.0.attn_norm.weight",
+      "layer": 0,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 436851616
+    },
+    {
+      "name": "blk.0.ffn_norm.weight",
+      "layer": 0,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 726603168
+    },
+    {
+      "name": "blk.1.attn_norm.weight",
+      "layer": 1,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 840447904
+    },
+    {
+      "name": "blk.1.ffn_norm.weight",
+      "layer": 1,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 1130199456
+    },
+    {
+      "name": "blk.2.attn_norm.weight",
+      "layer": 2,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 1244044192
+    },
+    {
+      "name": "blk.2.ffn_norm.weight",
+      "layer": 2,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 1533795744
+    },
+    {
+      "name": "blk.3.attn_norm.weight",
+      "layer": 3,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 1647640480
+    },
+    {
+      "name": "blk.3.ffn_norm.weight",
+      "layer": 3,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 1937392032
+    },
+    {
+      "name": "blk.4.attn_norm.weight",
+      "layer": 4,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 2051236768
+    },
+    {
+      "name": "blk.4.ffn_norm.weight",
+      "layer": 4,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 2340988320
+    },
+    {
+      "name": "blk.5.attn_norm.weight",
+      "layer": 5,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 2454833056
+    },
+    {
+      "name": "blk.5.ffn_norm.weight",
+      "layer": 5,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 2744584608
+    },
+    {
+      "name": "blk.6.attn_norm.weight",
+      "layer": 6,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 2858429344
+    },
+    {
+      "name": "blk.6.ffn_norm.weight",
+      "layer": 6,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 3096006048
+    },
+    {
+      "name": "blk.7.attn_norm.weight",
+      "layer": 7,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 3209850784
+    },
+    {
+      "name": "blk.7.ffn_norm.weight",
+      "layer": 7,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 3447427488
+    },
+    {
+      "name": "blk.8.attn_norm.weight",
+      "layer": 8,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 3561272224
+    },
+    {
+      "name": "blk.8.ffn_norm.weight",
+      "layer": 8,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 3851023776
+    },
+    {
+      "name": "blk.9.attn_norm.weight",
+      "layer": 9,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 3964868512
+    },
+    {
+      "name": "blk.9.ffn_norm.weight",
+      "layer": 9,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 4202445216
+    },
+    {
+      "name": "blk.10.attn_norm.weight",
+      "layer": 10,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 4316289952
+    },
+    {
+      "name": "blk.10.ffn_norm.weight",
+      "layer": 10,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 4553866656
+    },
+    {
+      "name": "blk.11.attn_norm.weight",
+      "layer": 11,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 4667711392
+    },
+    {
+      "name": "blk.11.ffn_norm.weight",
+      "layer": 11,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 4957462944
+    },
+    {
+      "name": "blk.12.attn_norm.weight",
+      "layer": 12,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 5071307680
+    },
+    {
+      "name": "blk.12.ffn_norm.weight",
+      "layer": 12,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 5308884384
+    },
+    {
+      "name": "blk.13.attn_norm.weight",
+      "layer": 13,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 5422729120
+    },
+    {
+      "name": "blk.13.ffn_norm.weight",
+      "layer": 13,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 5660305824
+    },
+    {
+      "name": "blk.14.attn_norm.weight",
+      "layer": 14,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 5774150560
+    },
+    {
+      "name": "blk.14.ffn_norm.weight",
+      "layer": 14,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 6063902112
+    },
+    {
+      "name": "blk.15.attn_norm.weight",
+      "layer": 15,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 6177746848
+    },
+    {
+      "name": "blk.15.ffn_norm.weight",
+      "layer": 15,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 6415323552
+    },
+    {
+      "name": "blk.16.attn_norm.weight",
+      "layer": 16,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 6529168288
+    },
+    {
+      "name": "blk.16.ffn_norm.weight",
+      "layer": 16,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 6766744992
+    },
+    {
+      "name": "blk.17.attn_norm.weight",
+      "layer": 17,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 6880589728
+    },
+    {
+      "name": "blk.17.ffn_norm.weight",
+      "layer": 17,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 7170341280
+    },
+    {
+      "name": "blk.18.attn_norm.weight",
+      "layer": 18,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 7284186016
+    },
+    {
+      "name": "blk.18.ffn_norm.weight",
+      "layer": 18,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 7521762720
+    },
+    {
+      "name": "blk.19.attn_norm.weight",
+      "layer": 19,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 7635607456
+    },
+    {
+      "name": "blk.19.ffn_norm.weight",
+      "layer": 19,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 7873184160
+    },
+    {
+      "name": "blk.20.attn_norm.weight",
+      "layer": 20,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 7987028896
+    },
+    {
+      "name": "blk.20.ffn_norm.weight",
+      "layer": 20,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 8276780448
+    },
+    {
+      "name": "blk.21.attn_norm.weight",
+      "layer": 21,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 8390625184
+    },
+    {
+      "name": "blk.21.ffn_norm.weight",
+      "layer": 21,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 8628201888
+    },
+    {
+      "name": "blk.22.attn_norm.weight",
+      "layer": 22,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 8742046624
+    },
+    {
+      "name": "blk.22.ffn_norm.weight",
+      "layer": 22,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 8979623328
+    },
+    {
+      "name": "blk.23.attn_norm.weight",
+      "layer": 23,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 9093468064
+    },
+    {
+      "name": "blk.23.ffn_norm.weight",
+      "layer": 23,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 9383219616
+    },
+    {
+      "name": "blk.24.attn_norm.weight",
+      "layer": 24,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 9497064352
+    },
+    {
+      "name": "blk.24.ffn_norm.weight",
+      "layer": 24,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 9734641056
+    },
+    {
+      "name": "blk.25.attn_norm.weight",
+      "layer": 25,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 9848485792
+    },
+    {
+      "name": "blk.25.ffn_norm.weight",
+      "layer": 25,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 10086062496
+    },
+    {
+      "name": "blk.26.attn_norm.weight",
+      "layer": 26,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 10199907232
+    },
+    {
+      "name": "blk.26.ffn_norm.weight",
+      "layer": 26,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 10489658784
+    },
+    {
+      "name": "blk.27.attn_norm.weight",
+      "layer": 27,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 10603503520
+    },
+    {
+      "name": "blk.27.ffn_norm.weight",
+      "layer": 27,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 10841080224
+    },
+    {
+      "name": "blk.28.attn_norm.weight",
+      "layer": 28,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 10954924960
+    },
+    {
+      "name": "blk.28.ffn_norm.weight",
+      "layer": 28,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 11192501664
+    },
+    {
+      "name": "blk.29.attn_norm.weight",
+      "layer": 29,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 11306346400
+    },
+    {
+      "name": "blk.29.ffn_norm.weight",
+      "layer": 29,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 11596097952
+    },
+    {
+      "name": "blk.30.attn_norm.weight",
+      "layer": 30,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 11709942688
+    },
+    {
+      "name": "blk.30.ffn_norm.weight",
+      "layer": 30,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 11947519392
+    },
+    {
+      "name": "blk.31.attn_norm.weight",
+      "layer": 31,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 12061364128
+    },
+    {
+      "name": "blk.31.ffn_norm.weight",
+      "layer": 31,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 12298940832
+    },
+    {
+      "name": "blk.32.attn_norm.weight",
+      "layer": 32,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 12412785568
+    },
+    {
+      "name": "blk.32.ffn_norm.weight",
+      "layer": 32,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 12702537120
+    },
+    {
+      "name": "blk.33.attn_norm.weight",
+      "layer": 33,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 12816381856
+    },
+    {
+      "name": "blk.33.ffn_norm.weight",
+      "layer": 33,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 13053958560
+    },
+    {
+      "name": "blk.34.attn_norm.weight",
+      "layer": 34,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 13167803296
+    },
+    {
+      "name": "blk.34.ffn_norm.weight",
+      "layer": 34,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 13405380000
+    },
+    {
+      "name": "blk.35.attn_norm.weight",
+      "layer": 35,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 13519224736
+    },
+    {
+      "name": "blk.35.ffn_norm.weight",
+      "layer": 35,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 13808976288
+    },
+    {
+      "name": "blk.36.attn_norm.weight",
+      "layer": 36,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 13922821024
+    },
+    {
+      "name": "blk.36.ffn_norm.weight",
+      "layer": 36,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 14160397728
+    },
+    {
+      "name": "blk.37.attn_norm.weight",
+      "layer": 37,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 14274242464
+    },
+    {
+      "name": "blk.37.ffn_norm.weight",
+      "layer": 37,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 14511819168
+    },
+    {
+      "name": "blk.38.attn_norm.weight",
+      "layer": 38,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 14625663904
+    },
+    {
+      "name": "blk.38.ffn_norm.weight",
+      "layer": 38,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 14915415456
+    },
+    {
+      "name": "blk.39.attn_norm.weight",
+      "layer": 39,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 15029260192
+    },
+    {
+      "name": "blk.39.ffn_norm.weight",
+      "layer": 39,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 15266836896
+    },
+    {
+      "name": "blk.40.attn_norm.weight",
+      "layer": 40,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 15380681632
+    },
+    {
+      "name": "blk.40.ffn_norm.weight",
+      "layer": 40,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 15618258336
+    },
+    {
+      "name": "blk.41.attn_norm.weight",
+      "layer": 41,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 15732103072
+    },
+    {
+      "name": "blk.41.ffn_norm.weight",
+      "layer": 41,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 16021854624
+    },
+    {
+      "name": "blk.42.attn_norm.weight",
+      "layer": 42,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 16135699360
+    },
+    {
+      "name": "blk.42.ffn_norm.weight",
+      "layer": 42,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 16425450912
+    },
+    {
+      "name": "blk.43.attn_norm.weight",
+      "layer": 43,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 16539295648
+    },
+    {
+      "name": "blk.43.ffn_norm.weight",
+      "layer": 43,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 16829047200
+    },
+    {
+      "name": "blk.44.attn_norm.weight",
+      "layer": 44,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 16942891936
+    },
+    {
+      "name": "blk.44.ffn_norm.weight",
+      "layer": 44,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 17232643488
+    },
+    {
+      "name": "blk.45.attn_norm.weight",
+      "layer": 45,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 17346488224
+    },
+    {
+      "name": "blk.45.ffn_norm.weight",
+      "layer": 45,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 17636239776
+    },
+    {
+      "name": "blk.46.attn_norm.weight",
+      "layer": 46,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 17750084512
+    },
+    {
+      "name": "blk.46.ffn_norm.weight",
+      "layer": 46,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 18039836064
+    },
+    {
+      "name": "blk.47.attn_norm.weight",
+      "layer": 47,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 18153680800
+    },
+    {
+      "name": "blk.47.ffn_norm.weight",
+      "layer": 47,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048
+      ],
+      "type": "0",
+      "n_bytes": 8192,
+      "offset": 18443432352
+    },
+    {
+      "name": "blk.0.attn_k_norm.weight",
+      "layer": 0,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 436851104
+    },
+    {
+      "name": "blk.0.attn_q_norm.weight",
+      "layer": 0,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 446296992
+    },
+    {
+      "name": "blk.1.attn_k_norm.weight",
+      "layer": 1,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 840447392
+    },
+    {
+      "name": "blk.1.attn_q_norm.weight",
+      "layer": 1,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 849893280
+    },
+    {
+      "name": "blk.2.attn_k_norm.weight",
+      "layer": 2,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 1244043680
+    },
+    {
+      "name": "blk.2.attn_q_norm.weight",
+      "layer": 2,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 1253489568
+    },
+    {
+      "name": "blk.3.attn_k_norm.weight",
+      "layer": 3,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 1647639968
+    },
+    {
+      "name": "blk.3.attn_q_norm.weight",
+      "layer": 3,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 1657085856
+    },
+    {
+      "name": "blk.4.attn_k_norm.weight",
+      "layer": 4,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 2051236256
+    },
+    {
+      "name": "blk.4.attn_q_norm.weight",
+      "layer": 4,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 2060682144
+    },
+    {
+      "name": "blk.5.attn_k_norm.weight",
+      "layer": 5,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 2454832544
+    },
+    {
+      "name": "blk.5.attn_q_norm.weight",
+      "layer": 5,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 2464278432
+    },
+    {
+      "name": "blk.6.attn_k_norm.weight",
+      "layer": 6,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 2858428832
+    },
+    {
+      "name": "blk.6.attn_q_norm.weight",
+      "layer": 6,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 2867874720
+    },
+    {
+      "name": "blk.7.attn_k_norm.weight",
+      "layer": 7,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 3209850272
+    },
+    {
+      "name": "blk.7.attn_q_norm.weight",
+      "layer": 7,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 3219296160
+    },
+    {
+      "name": "blk.8.attn_k_norm.weight",
+      "layer": 8,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 3561271712
+    },
+    {
+      "name": "blk.8.attn_q_norm.weight",
+      "layer": 8,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 3570717600
+    },
+    {
+      "name": "blk.9.attn_k_norm.weight",
+      "layer": 9,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 3964868000
+    },
+    {
+      "name": "blk.9.attn_q_norm.weight",
+      "layer": 9,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 3974313888
+    },
+    {
+      "name": "blk.10.attn_k_norm.weight",
+      "layer": 10,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 4316289440
+    },
+    {
+      "name": "blk.10.attn_q_norm.weight",
+      "layer": 10,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 4325735328
+    },
+    {
+      "name": "blk.11.attn_k_norm.weight",
+      "layer": 11,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 4667710880
+    },
+    {
+      "name": "blk.11.attn_q_norm.weight",
+      "layer": 11,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 4677156768
+    },
+    {
+      "name": "blk.12.attn_k_norm.weight",
+      "layer": 12,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 5071307168
+    },
+    {
+      "name": "blk.12.attn_q_norm.weight",
+      "layer": 12,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 5080753056
+    },
+    {
+      "name": "blk.13.attn_k_norm.weight",
+      "layer": 13,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 5422728608
+    },
+    {
+      "name": "blk.13.attn_q_norm.weight",
+      "layer": 13,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 5432174496
+    },
+    {
+      "name": "blk.14.attn_k_norm.weight",
+      "layer": 14,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 5774150048
+    },
+    {
+      "name": "blk.14.attn_q_norm.weight",
+      "layer": 14,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 5783595936
+    },
+    {
+      "name": "blk.15.attn_k_norm.weight",
+      "layer": 15,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 6177746336
+    },
+    {
+      "name": "blk.15.attn_q_norm.weight",
+      "layer": 15,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 6187192224
+    },
+    {
+      "name": "blk.16.attn_k_norm.weight",
+      "layer": 16,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 6529167776
+    },
+    {
+      "name": "blk.16.attn_q_norm.weight",
+      "layer": 16,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 6538613664
+    },
+    {
+      "name": "blk.17.attn_k_norm.weight",
+      "layer": 17,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 6880589216
+    },
+    {
+      "name": "blk.17.attn_q_norm.weight",
+      "layer": 17,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 6890035104
+    },
+    {
+      "name": "blk.18.attn_k_norm.weight",
+      "layer": 18,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 7284185504
+    },
+    {
+      "name": "blk.18.attn_q_norm.weight",
+      "layer": 18,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 7293631392
+    },
+    {
+      "name": "blk.19.attn_k_norm.weight",
+      "layer": 19,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 7635606944
+    },
+    {
+      "name": "blk.19.attn_q_norm.weight",
+      "layer": 19,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 7645052832
+    },
+    {
+      "name": "blk.20.attn_k_norm.weight",
+      "layer": 20,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 7987028384
+    },
+    {
+      "name": "blk.20.attn_q_norm.weight",
+      "layer": 20,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 7996474272
+    },
+    {
+      "name": "blk.21.attn_k_norm.weight",
+      "layer": 21,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 8390624672
+    },
+    {
+      "name": "blk.21.attn_q_norm.weight",
+      "layer": 21,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 8400070560
+    },
+    {
+      "name": "blk.22.attn_k_norm.weight",
+      "layer": 22,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 8742046112
+    },
+    {
+      "name": "blk.22.attn_q_norm.weight",
+      "layer": 22,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 8751492000
+    },
+    {
+      "name": "blk.23.attn_k_norm.weight",
+      "layer": 23,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 9093467552
+    },
+    {
+      "name": "blk.23.attn_q_norm.weight",
+      "layer": 23,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 9102913440
+    },
+    {
+      "name": "blk.24.attn_k_norm.weight",
+      "layer": 24,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 9497063840
+    },
+    {
+      "name": "blk.24.attn_q_norm.weight",
+      "layer": 24,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 9506509728
+    },
+    {
+      "name": "blk.25.attn_k_norm.weight",
+      "layer": 25,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 9848485280
+    },
+    {
+      "name": "blk.25.attn_q_norm.weight",
+      "layer": 25,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 9857931168
+    },
+    {
+      "name": "blk.26.attn_k_norm.weight",
+      "layer": 26,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 10199906720
+    },
+    {
+      "name": "blk.26.attn_q_norm.weight",
+      "layer": 26,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 10209352608
+    },
+    {
+      "name": "blk.27.attn_k_norm.weight",
+      "layer": 27,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 10603503008
+    },
+    {
+      "name": "blk.27.attn_q_norm.weight",
+      "layer": 27,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 10612948896
+    },
+    {
+      "name": "blk.28.attn_k_norm.weight",
+      "layer": 28,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 10954924448
+    },
+    {
+      "name": "blk.28.attn_q_norm.weight",
+      "layer": 28,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 10964370336
+    },
+    {
+      "name": "blk.29.attn_k_norm.weight",
+      "layer": 29,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 11306345888
+    },
+    {
+      "name": "blk.29.attn_q_norm.weight",
+      "layer": 29,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 11315791776
+    },
+    {
+      "name": "blk.30.attn_k_norm.weight",
+      "layer": 30,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 11709942176
+    },
+    {
+      "name": "blk.30.attn_q_norm.weight",
+      "layer": 30,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 11719388064
+    },
+    {
+      "name": "blk.31.attn_k_norm.weight",
+      "layer": 31,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 12061363616
+    },
+    {
+      "name": "blk.31.attn_q_norm.weight",
+      "layer": 31,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 12070809504
+    },
+    {
+      "name": "blk.32.attn_k_norm.weight",
+      "layer": 32,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 12412785056
+    },
+    {
+      "name": "blk.32.attn_q_norm.weight",
+      "layer": 32,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 12422230944
+    },
+    {
+      "name": "blk.33.attn_k_norm.weight",
+      "layer": 33,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 12816381344
+    },
+    {
+      "name": "blk.33.attn_q_norm.weight",
+      "layer": 33,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 12825827232
+    },
+    {
+      "name": "blk.34.attn_k_norm.weight",
+      "layer": 34,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 13167802784
+    },
+    {
+      "name": "blk.34.attn_q_norm.weight",
+      "layer": 34,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 13177248672
+    },
+    {
+      "name": "blk.35.attn_k_norm.weight",
+      "layer": 35,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 13519224224
+    },
+    {
+      "name": "blk.35.attn_q_norm.weight",
+      "layer": 35,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 13528670112
+    },
+    {
+      "name": "blk.36.attn_k_norm.weight",
+      "layer": 36,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 13922820512
+    },
+    {
+      "name": "blk.36.attn_q_norm.weight",
+      "layer": 36,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 13932266400
+    },
+    {
+      "name": "blk.37.attn_k_norm.weight",
+      "layer": 37,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 14274241952
+    },
+    {
+      "name": "blk.37.attn_q_norm.weight",
+      "layer": 37,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 14283687840
+    },
+    {
+      "name": "blk.38.attn_k_norm.weight",
+      "layer": 38,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 14625663392
+    },
+    {
+      "name": "blk.38.attn_q_norm.weight",
+      "layer": 38,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 14635109280
+    },
+    {
+      "name": "blk.39.attn_k_norm.weight",
+      "layer": 39,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 15029259680
+    },
+    {
+      "name": "blk.39.attn_q_norm.weight",
+      "layer": 39,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 15038705568
+    },
+    {
+      "name": "blk.40.attn_k_norm.weight",
+      "layer": 40,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 15380681120
+    },
+    {
+      "name": "blk.40.attn_q_norm.weight",
+      "layer": 40,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 15390127008
+    },
+    {
+      "name": "blk.41.attn_k_norm.weight",
+      "layer": 41,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 15732102560
+    },
+    {
+      "name": "blk.41.attn_q_norm.weight",
+      "layer": 41,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 15741548448
+    },
+    {
+      "name": "blk.42.attn_k_norm.weight",
+      "layer": 42,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 16135698848
+    },
+    {
+      "name": "blk.42.attn_q_norm.weight",
+      "layer": 42,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 16145144736
+    },
+    {
+      "name": "blk.43.attn_k_norm.weight",
+      "layer": 43,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 16539295136
+    },
+    {
+      "name": "blk.43.attn_q_norm.weight",
+      "layer": 43,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 16548741024
+    },
+    {
+      "name": "blk.44.attn_k_norm.weight",
+      "layer": 44,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 16942891424
+    },
+    {
+      "name": "blk.44.attn_q_norm.weight",
+      "layer": 44,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 16952337312
+    },
+    {
+      "name": "blk.45.attn_k_norm.weight",
+      "layer": 45,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 17346487712
+    },
+    {
+      "name": "blk.45.attn_q_norm.weight",
+      "layer": 45,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 17355933600
+    },
+    {
+      "name": "blk.46.attn_k_norm.weight",
+      "layer": 46,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 17750084000
+    },
+    {
+      "name": "blk.46.attn_q_norm.weight",
+      "layer": 46,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 17759529888
+    },
+    {
+      "name": "blk.47.attn_k_norm.weight",
+      "layer": 47,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 18153680288
+    },
+    {
+      "name": "blk.47.attn_q_norm.weight",
+      "layer": 47,
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        128
+      ],
+      "type": "0",
+      "n_bytes": 512,
+      "offset": 18163126176
+    }
+  ],
+  "expert_tensors": [
+    {
+      "name": "blk.0.ffn_down_exps.weight",
+      "layer": 0,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "14",
+      "n_bytes": 165150720,
+      "offset": 447157664,
+      "per_expert_bytes": 1290240
+    },
+    {
+      "name": "blk.0.ffn_gate_exps.weight",
+      "layer": 0,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 612308384,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.0.ffn_up_exps.weight",
+      "layer": 0,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 726611360,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.1.ffn_down_exps.weight",
+      "layer": 1,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "14",
+      "n_bytes": 165150720,
+      "offset": 850753952,
+      "per_expert_bytes": 1290240
+    },
+    {
+      "name": "blk.1.ffn_gate_exps.weight",
+      "layer": 1,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 1015904672,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.1.ffn_up_exps.weight",
+      "layer": 1,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 1130207648,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.2.ffn_down_exps.weight",
+      "layer": 2,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "14",
+      "n_bytes": 165150720,
+      "offset": 1254350240,
+      "per_expert_bytes": 1290240
+    },
+    {
+      "name": "blk.2.ffn_gate_exps.weight",
+      "layer": 2,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 1419500960,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.2.ffn_up_exps.weight",
+      "layer": 2,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 1533803936,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.3.ffn_down_exps.weight",
+      "layer": 3,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "14",
+      "n_bytes": 165150720,
+      "offset": 1657946528,
+      "per_expert_bytes": 1290240
+    },
+    {
+      "name": "blk.3.ffn_gate_exps.weight",
+      "layer": 3,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 1823097248,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.3.ffn_up_exps.weight",
+      "layer": 3,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 1937400224,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.4.ffn_down_exps.weight",
+      "layer": 4,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "14",
+      "n_bytes": 165150720,
+      "offset": 2061542816,
+      "per_expert_bytes": 1290240
+    },
+    {
+      "name": "blk.4.ffn_gate_exps.weight",
+      "layer": 4,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 2226693536,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.4.ffn_up_exps.weight",
+      "layer": 4,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 2340996512,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.5.ffn_down_exps.weight",
+      "layer": 5,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "14",
+      "n_bytes": 165150720,
+      "offset": 2465139104,
+      "per_expert_bytes": 1290240
+    },
+    {
+      "name": "blk.5.ffn_gate_exps.weight",
+      "layer": 5,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 2630289824,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.5.ffn_up_exps.weight",
+      "layer": 5,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 2744592800,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.6.ffn_down_exps.weight",
+      "layer": 6,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 2868465056,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.6.ffn_gate_exps.weight",
+      "layer": 6,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 2981711264,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.6.ffn_up_exps.weight",
+      "layer": 6,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 3096014240,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.7.ffn_down_exps.weight",
+      "layer": 7,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 3219886496,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.7.ffn_gate_exps.weight",
+      "layer": 7,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 3333132704,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.7.ffn_up_exps.weight",
+      "layer": 7,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 3447435680,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.8.ffn_down_exps.weight",
+      "layer": 8,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "14",
+      "n_bytes": 165150720,
+      "offset": 3571578272,
+      "per_expert_bytes": 1290240
+    },
+    {
+      "name": "blk.8.ffn_gate_exps.weight",
+      "layer": 8,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 3736728992,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.8.ffn_up_exps.weight",
+      "layer": 8,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 3851031968,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.9.ffn_down_exps.weight",
+      "layer": 9,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 3974904224,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.9.ffn_gate_exps.weight",
+      "layer": 9,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 4088150432,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.9.ffn_up_exps.weight",
+      "layer": 9,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 4202453408,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.10.ffn_down_exps.weight",
+      "layer": 10,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 4326325664,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.10.ffn_gate_exps.weight",
+      "layer": 10,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 4439571872,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.10.ffn_up_exps.weight",
+      "layer": 10,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 4553874848,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.11.ffn_down_exps.weight",
+      "layer": 11,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "14",
+      "n_bytes": 165150720,
+      "offset": 4678017440,
+      "per_expert_bytes": 1290240
+    },
+    {
+      "name": "blk.11.ffn_gate_exps.weight",
+      "layer": 11,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 4843168160,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.11.ffn_up_exps.weight",
+      "layer": 11,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 4957471136,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.12.ffn_down_exps.weight",
+      "layer": 12,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 5081343392,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.12.ffn_gate_exps.weight",
+      "layer": 12,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 5194589600,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.12.ffn_up_exps.weight",
+      "layer": 12,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 5308892576,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.13.ffn_down_exps.weight",
+      "layer": 13,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 5432764832,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.13.ffn_gate_exps.weight",
+      "layer": 13,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 5546011040,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.13.ffn_up_exps.weight",
+      "layer": 13,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 5660314016,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.14.ffn_down_exps.weight",
+      "layer": 14,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "14",
+      "n_bytes": 165150720,
+      "offset": 5784456608,
+      "per_expert_bytes": 1290240
+    },
+    {
+      "name": "blk.14.ffn_gate_exps.weight",
+      "layer": 14,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 5949607328,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.14.ffn_up_exps.weight",
+      "layer": 14,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 6063910304,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.15.ffn_down_exps.weight",
+      "layer": 15,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 6187782560,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.15.ffn_gate_exps.weight",
+      "layer": 15,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 6301028768,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.15.ffn_up_exps.weight",
+      "layer": 15,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 6415331744,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.16.ffn_down_exps.weight",
+      "layer": 16,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 6539204000,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.16.ffn_gate_exps.weight",
+      "layer": 16,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 6652450208,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.16.ffn_up_exps.weight",
+      "layer": 16,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 6766753184,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.17.ffn_down_exps.weight",
+      "layer": 17,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "14",
+      "n_bytes": 165150720,
+      "offset": 6890895776,
+      "per_expert_bytes": 1290240
+    },
+    {
+      "name": "blk.17.ffn_gate_exps.weight",
+      "layer": 17,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 7056046496,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.17.ffn_up_exps.weight",
+      "layer": 17,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 7170349472,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.18.ffn_down_exps.weight",
+      "layer": 18,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 7294221728,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.18.ffn_gate_exps.weight",
+      "layer": 18,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 7407467936,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.18.ffn_up_exps.weight",
+      "layer": 18,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 7521770912,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.19.ffn_down_exps.weight",
+      "layer": 19,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 7645643168,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.19.ffn_gate_exps.weight",
+      "layer": 19,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 7758889376,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.19.ffn_up_exps.weight",
+      "layer": 19,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 7873192352,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.20.ffn_down_exps.weight",
+      "layer": 20,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "14",
+      "n_bytes": 165150720,
+      "offset": 7997334944,
+      "per_expert_bytes": 1290240
+    },
+    {
+      "name": "blk.20.ffn_gate_exps.weight",
+      "layer": 20,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 8162485664,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.20.ffn_up_exps.weight",
+      "layer": 20,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 8276788640,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.21.ffn_down_exps.weight",
+      "layer": 21,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 8400660896,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.21.ffn_gate_exps.weight",
+      "layer": 21,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 8513907104,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.21.ffn_up_exps.weight",
+      "layer": 21,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 8628210080,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.22.ffn_down_exps.weight",
+      "layer": 22,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 8752082336,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.22.ffn_gate_exps.weight",
+      "layer": 22,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 8865328544,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.22.ffn_up_exps.weight",
+      "layer": 22,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 8979631520,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.23.ffn_down_exps.weight",
+      "layer": 23,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "14",
+      "n_bytes": 165150720,
+      "offset": 9103774112,
+      "per_expert_bytes": 1290240
+    },
+    {
+      "name": "blk.23.ffn_gate_exps.weight",
+      "layer": 23,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 9268924832,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.23.ffn_up_exps.weight",
+      "layer": 23,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 9383227808,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.24.ffn_down_exps.weight",
+      "layer": 24,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 9507100064,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.24.ffn_gate_exps.weight",
+      "layer": 24,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 9620346272,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.24.ffn_up_exps.weight",
+      "layer": 24,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 9734649248,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.25.ffn_down_exps.weight",
+      "layer": 25,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 9858521504,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.25.ffn_gate_exps.weight",
+      "layer": 25,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 9971767712,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.25.ffn_up_exps.weight",
+      "layer": 25,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 10086070688,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.26.ffn_down_exps.weight",
+      "layer": 26,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "14",
+      "n_bytes": 165150720,
+      "offset": 10210213280,
+      "per_expert_bytes": 1290240
+    },
+    {
+      "name": "blk.26.ffn_gate_exps.weight",
+      "layer": 26,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 10375364000,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.26.ffn_up_exps.weight",
+      "layer": 26,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 10489666976,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.27.ffn_down_exps.weight",
+      "layer": 27,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 10613539232,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.27.ffn_gate_exps.weight",
+      "layer": 27,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 10726785440,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.27.ffn_up_exps.weight",
+      "layer": 27,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 10841088416,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.28.ffn_down_exps.weight",
+      "layer": 28,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 10964960672,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.28.ffn_gate_exps.weight",
+      "layer": 28,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 11078206880,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.28.ffn_up_exps.weight",
+      "layer": 28,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 11192509856,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.29.ffn_down_exps.weight",
+      "layer": 29,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "14",
+      "n_bytes": 165150720,
+      "offset": 11316652448,
+      "per_expert_bytes": 1290240
+    },
+    {
+      "name": "blk.29.ffn_gate_exps.weight",
+      "layer": 29,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 11481803168,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.29.ffn_up_exps.weight",
+      "layer": 29,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 11596106144,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.30.ffn_down_exps.weight",
+      "layer": 30,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 11719978400,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.30.ffn_gate_exps.weight",
+      "layer": 30,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 11833224608,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.30.ffn_up_exps.weight",
+      "layer": 30,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 11947527584,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.31.ffn_down_exps.weight",
+      "layer": 31,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 12071399840,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.31.ffn_gate_exps.weight",
+      "layer": 31,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 12184646048,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.31.ffn_up_exps.weight",
+      "layer": 31,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 12298949024,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.32.ffn_down_exps.weight",
+      "layer": 32,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "14",
+      "n_bytes": 165150720,
+      "offset": 12423091616,
+      "per_expert_bytes": 1290240
+    },
+    {
+      "name": "blk.32.ffn_gate_exps.weight",
+      "layer": 32,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 12588242336,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.32.ffn_up_exps.weight",
+      "layer": 32,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 12702545312,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.33.ffn_down_exps.weight",
+      "layer": 33,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 12826417568,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.33.ffn_gate_exps.weight",
+      "layer": 33,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 12939663776,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.33.ffn_up_exps.weight",
+      "layer": 33,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 13053966752,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.34.ffn_down_exps.weight",
+      "layer": 34,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 13177839008,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.34.ffn_gate_exps.weight",
+      "layer": 34,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 13291085216,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.34.ffn_up_exps.weight",
+      "layer": 34,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 13405388192,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.35.ffn_down_exps.weight",
+      "layer": 35,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "14",
+      "n_bytes": 165150720,
+      "offset": 13529530784,
+      "per_expert_bytes": 1290240
+    },
+    {
+      "name": "blk.35.ffn_gate_exps.weight",
+      "layer": 35,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 13694681504,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.35.ffn_up_exps.weight",
+      "layer": 35,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 13808984480,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.36.ffn_down_exps.weight",
+      "layer": 36,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 13932856736,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.36.ffn_gate_exps.weight",
+      "layer": 36,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 14046102944,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.36.ffn_up_exps.weight",
+      "layer": 36,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 14160405920,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.37.ffn_down_exps.weight",
+      "layer": 37,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 14284278176,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.37.ffn_gate_exps.weight",
+      "layer": 37,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 14397524384,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.37.ffn_up_exps.weight",
+      "layer": 37,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 14511827360,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.38.ffn_down_exps.weight",
+      "layer": 38,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "14",
+      "n_bytes": 165150720,
+      "offset": 14635969952,
+      "per_expert_bytes": 1290240
+    },
+    {
+      "name": "blk.38.ffn_gate_exps.weight",
+      "layer": 38,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 14801120672,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.38.ffn_up_exps.weight",
+      "layer": 38,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 14915423648,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.39.ffn_down_exps.weight",
+      "layer": 39,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 15039295904,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.39.ffn_gate_exps.weight",
+      "layer": 39,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 15152542112,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.39.ffn_up_exps.weight",
+      "layer": 39,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 15266845088,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.40.ffn_down_exps.weight",
+      "layer": 40,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 15390717344,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.40.ffn_gate_exps.weight",
+      "layer": 40,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 15503963552,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.40.ffn_up_exps.weight",
+      "layer": 40,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 15618266528,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.41.ffn_down_exps.weight",
+      "layer": 41,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "14",
+      "n_bytes": 165150720,
+      "offset": 15742409120,
+      "per_expert_bytes": 1290240
+    },
+    {
+      "name": "blk.41.ffn_gate_exps.weight",
+      "layer": 41,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 15907559840,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.41.ffn_up_exps.weight",
+      "layer": 41,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 16021862816,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.42.ffn_down_exps.weight",
+      "layer": 42,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "14",
+      "n_bytes": 165150720,
+      "offset": 16146005408,
+      "per_expert_bytes": 1290240
+    },
+    {
+      "name": "blk.42.ffn_gate_exps.weight",
+      "layer": 42,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 16311156128,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.42.ffn_up_exps.weight",
+      "layer": 42,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 16425459104,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.43.ffn_down_exps.weight",
+      "layer": 43,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "14",
+      "n_bytes": 165150720,
+      "offset": 16549601696,
+      "per_expert_bytes": 1290240
+    },
+    {
+      "name": "blk.43.ffn_gate_exps.weight",
+      "layer": 43,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 16714752416,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.43.ffn_up_exps.weight",
+      "layer": 43,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 16829055392,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.44.ffn_down_exps.weight",
+      "layer": 44,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "14",
+      "n_bytes": 165150720,
+      "offset": 16953197984,
+      "per_expert_bytes": 1290240
+    },
+    {
+      "name": "blk.44.ffn_gate_exps.weight",
+      "layer": 44,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 17118348704,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.44.ffn_up_exps.weight",
+      "layer": 44,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 17232651680,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.45.ffn_down_exps.weight",
+      "layer": 45,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "14",
+      "n_bytes": 165150720,
+      "offset": 17356794272,
+      "per_expert_bytes": 1290240
+    },
+    {
+      "name": "blk.45.ffn_gate_exps.weight",
+      "layer": 45,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 17521944992,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.45.ffn_up_exps.weight",
+      "layer": 45,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 17636247968,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.46.ffn_down_exps.weight",
+      "layer": 46,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "14",
+      "n_bytes": 165150720,
+      "offset": 17760390560,
+      "per_expert_bytes": 1290240
+    },
+    {
+      "name": "blk.46.ffn_gate_exps.weight",
+      "layer": 46,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 17925541280,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.46.ffn_up_exps.weight",
+      "layer": 46,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 18039844256,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.47.ffn_down_exps.weight",
+      "layer": 47,
+      "kind": "down",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        768,
+        2048,
+        128
+      ],
+      "type": "14",
+      "n_bytes": 165150720,
+      "offset": 18163986848,
+      "per_expert_bytes": 1290240
+    },
+    {
+      "name": "blk.47.ffn_gate_exps.weight",
+      "layer": 47,
+      "kind": "gate",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 18329137568,
+      "per_expert_bytes": 884736
+    },
+    {
+      "name": "blk.47.ffn_up_exps.weight",
+      "layer": 47,
+      "kind": "up",
+      "shard": "Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf",
+      "shape": [
+        2048,
+        768,
+        128
+      ],
+      "type": "12",
+      "n_bytes": 113246208,
+      "offset": 18443440544,
+      "per_expert_bytes": 884736
+    }
+  ]
+}

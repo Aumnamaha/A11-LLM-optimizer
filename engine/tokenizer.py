@@ -1,6 +1,10 @@
 import os
 from typing import List
-from transformers import AutoTokenizer
+
+try:
+    from transformers import AutoTokenizer
+except ImportError:
+    AutoTokenizer = None
 
 class QwenTokenizerManager:
     """
@@ -15,6 +19,9 @@ class QwenTokenizerManager:
 
     def _initialize_tokenizer(self):
         print(f"\n[Tokenizer Manager] Loading Qwen Tokenizer Vocabulary...")
+        if AutoTokenizer is None:
+            print("  [Warning] transformers is not installed; using byte fallback tokenizer.")
+            return
         os.makedirs(self.cache_dir, exist_ok=True)
         
         try:

@@ -1,5 +1,6 @@
 from typing import Any, List, Optional
 from engine.loader import SplitGGUFLoader
+from engine.hardware import MIN_RAM_GB, MIN_VRAM_GB
 
 
 class LayerMemorySplitter:
@@ -10,8 +11,8 @@ class LayerMemorySplitter:
     def __init__(
         self,
         loader: SplitGGUFLoader,
-        vram_budget_gb: float = 4.0,
-        ram_budget_gb: float = 16.0,
+        vram_budget_gb: float = MIN_VRAM_GB,
+        ram_budget_gb: float = MIN_RAM_GB,
         max_hot_experts: Optional[int] = None,
     ):
         self.loader = loader
@@ -84,4 +85,4 @@ if __name__ == "__main__":
     target_dir = "/home/knk/Projects/A11-LLM-optimizer/models/Qwen3-30B-A3B"
     if os.path.exists(target_dir):
         loader = SplitGGUFLoader(target_dir)
-        splitter = LayerMemorySplitter(loader, vram_budget_gb=4.0, ram_budget_gb=16.0)
+        splitter = LayerMemorySplitter(loader)

@@ -1,0 +1,6 @@
+[
+  {"name": "cpu_mmap", "args": ["-ngl", "0"]},
+  {"name": "cpu_dio", "args": ["-ngl", "0", "-lm", "dio"]},
+  {"name": "vulkan_attn_cpu_moe", "args": ["-ngl", "99", "-mg", "1", "-ncmoe", "999"]},
+  {"name": "vulkan_attn_cpu_moe_dio", "args": ["-ngl", "99", "-mg", "1", "-ncmoe", "999", "-lm", "dio"]}
+]

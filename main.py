@@ -26,8 +26,8 @@ def inspect_directory(dir_path: str) -> str:
     return formatted_tree
 
 def main():
-    MODEL_DIR = "/home/aumnamaha/Documents/Local Ai/Qwen 3.8 Flash Next"
-    TARGET_DIR = "/home/aumnamaha/Documents/Proj/Student_Feedback"
+    MODEL_DIR = "/home/knk/Projects/A11-LLM-optimizer/models/Qwen3-30B-A3B"
+    TARGET_DIR = "/home/knk/Projects/A11-LLM-optimizer"
 
     print("==========================================================")
     print("      A11-LLM-Optimizer Directory Analysis Test           ")
@@ -46,7 +46,7 @@ def main():
     )
 
     # 3. Initialize Engine & Execute
-    pipeline = A11Pipeline(MODEL_DIR, vram_budget_gb=4.0, ram_budget_gb=16.0)
+    pipeline = A11Pipeline(MODEL_DIR)
     
     try:
         print("\n--- [Executing Model Inference Step] ---")

@@ -1,0 +1,1153 @@
+Yes. Based on everything we tested, I would develop this as a **research-grade Paged-MoE runtime**, not as a collection of optimizations added randomly.
+
+One important correction first: I would no longer force the project to use a “7B total / 3B active” model. A much better reference model for proving the idea is **Qwen3-30B-A3B**: its official model card reports **30.5B total parameters, 3.3B activated parameters, 128 experts, and 8 activated experts per token**. That gives us exactly the property this project is designed to exploit: a large total expert pool with a relatively small active computation footprint. [Hugging Face](https://huggingface.co/Qwen/Qwen3-30B-A3B-Base/blob/main/README.md?code=true\&utm_source=chatgpt.com)
+
+Current llama.cpp already gives us useful pieces for the baseline—CPU MoE offload, lazy tensor loading, mmap/direct-I/O controls—and there are active 2026 discussions/RFCs around persistent GPU expert caches and explicit MoE prefetching. We should use those as references and baselines, but keep our custom runtime separate until our design is proven. [GitHub](https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md?utm_source=chatgpt.com)
+
+# 1. Freeze the actual goal
+
+The project goal should be:
+
+> **Run a large sparse MoE model on a small-VRAM GPU by keeping only the working expert set in VRAM, a warm subset in RAM, and the complete expert set on SSD, while predicting and prefetching future experts.**
+
+Not:
+
+> Make SSD behave like VRAM.
+
+And not:
+
+> Page the entire model.
+
+The final hierarchy is:
+
+```text
+                  MODEL
+                    │
+        ┌───────────┴───────────┐
+        │                       │
+  RESIDENT CORE           MOE EXPERTS
+        │                       │
+      VRAM                ┌─────┴─────┐
+                          │           │
+                     HOT/WARM      COLD
+                     CACHE         STORE
+                       │             │
+                      VRAM          SSD
+                       ↑             ↑
+                       └──── RAM ────┘
+```
+
+Only the **large MoE expert weights** are aggressively pageable.
+
+---
+
+# 2. Phase 0 — establish the baseline
+
+This is the task you already assigned your teammate.
+
+Do this **before writing the pager**.
+
+The baseline environment must answer:
+
+```text
+What happens if we run the unmodified model?
+```
+
+Measure:
+
+```text
+VRAM
+RAM
+SSD reads
+load time
+prompt processing speed
+generation speed
+tokens/sec
+CPU usage
+GPU usage
+expert selections
+expert reuse
+```
+
+Run it under several workloads:
+
+```text
+A: repeated prompt
+B: different prompts
+C: long generation
+D: long context
+E: stress test
+```
+
+Why this matters:
+
+Our cache is useful only if the model actually exhibits enough expert locality.
+
+The 2026 llama.cpp MoE caching/prefetch work also uses this kind of profiling because the gain depends strongly on the workload and how experts are accessed. [GitHub](https://github.com/ggml-org/llama.cpp/discussions/24528?utm_source=chatgpt.com)
+
+### Deliverable
+
+```text
+baseline/
+├── benchmark.json
+├── routing.json
+├── memory.json
+└── SUMMARY.md
+```
+
+Do not move to Phase 2 until this is reproducible.
+
+---
+
+# 3. Phase 1 — model analyzer
+
+Now build a tool that understands the model **before trying to run it through our pager**.
+
+Its job is to inspect the model and generate an inventory.
+
+For every tensor:
+
+```text
+tensor name
+layer
+expert ID
+tensor type
+quantization
+size
+offset
+```
+
+For example:
+
+```text
+layer 12
+ ├── attention
+ ├── router
+ ├── expert 0
+ │    ├── gate
+ │    ├── up
+ │    └── down
+ ├── expert 1
+ └── ...
+```
+
+The output should answer:
+
+```text
+How many bytes belong to the MoE experts?
+How many bytes belong to the resident core?
+How large is each expert?
+How large is each tensor?
+```
+
+This becomes the foundation of the page table.
+
+---
+
+# 4. Phase 2 — define the page model
+
+Now introduce the basic abstraction:
+
+## Logical page
+
+Start around:
+
+**2 MiB**
+
+but treat it as a tunable parameter.
+
+Example:
+
+```text
+Expert 73
+  ├── Page 000
+  ├── Page 001
+  ├── Page 002
+  └── Page 003
+```
+
+Each page receives a stable identifier:
+
+```text
+expert_id
+layer_id
+tensor_id
+page_id
+```
+
+Do **not** use temporary random IDs as the primary identity.
+
+Use a stable logical identity such as:
+
+```text
+E73:L12:TUP:P003
+```
+
+Temporary runtime slot IDs can be separate:
+
+```text
+logical page → VRAM slot 7
+```
+
+This distinction makes debugging much easier.
+
+---
+
+# 5. Phase 3 — create the model page table
+
+This is your equivalent of a virtual-memory page table.
+
+Example:
+
+```text
+Logical Page
+     ↓
+Expert 73
+     ↓
+Layer 12
+     ↓
+Tensor UP
+     ↓
+SSD offset
+     ↓
+compressed size
+     ↓
+uncompressed size
+```
+
+The page table should be small enough to stay resident.
+
+It should tell the runtime:
+
+```text
+WHERE is the page?
+HOW big is it?
+IS it compressed?
+IS it currently cached?
+WHERE is its cache slot?
+```
+
+Do not store actual expert weights in the page table.
+
+Only metadata.
+
+---
+
+# 6. Phase 4 — build the custom SSD representation
+
+Now make the cold store.
+
+Conceptually:
+
+```text
+paged-model/
+├── manifest
+├── page_table
+├── metadata
+└── pages/
+    ├── page_000000
+    ├── page_000001
+    ├── page_000002
+    └── ...
+```
+
+But for the real implementation, I would avoid millions of tiny files.
+
+Use a small number of large data files:
+
+```text
+experts_00.bin
+experts_01.bin
+...
+```
+
+with an index telling us the offset of each page.
+
+This minimizes filesystem overhead.
+
+### Storage properties
+
+Pages should be:
+
+- contiguous where practical
+- aligned
+- independently addressable
+- independently decompressible
+- immutable
+
+---
+
+# 7. Phase 5 — baseline pager: SSD → RAM
+
+Do **not** implement VRAM yet.
+
+First prove:
+
+```text
+SSD → RAM → CPU
+```
+
+The runtime should be able to:
+
+1. request a logical page
+2. find its SSD offset
+3. read it
+4. decompress it
+5. place it in RAM
+6. return a pointer/handle
+
+Then implement eviction.
+
+```text
+RAM full
+ ↓
+choose victim
+ ↓
+remove page
+```
+
+Since weights are read-only:
+
+**never write them back to SSD.**
+
+SSD remains the immutable backing store.
+
+---
+
+# 8. Phase 6 — RAM cache manager
+
+Now make the warm cache intelligent.
+
+Each cache entry should track something like:
+
+```text
+page ID
+RAM address
+size
+last access
+access count
+layer
+expert
+prefetch status
+```
+
+Then implement the hybrid eviction policy:
+
+```text
+score =
+recency
++ frequency
++ predicted reuse
++ layer locality
+```
+
+Start simple:
+
+```text
+baseline → LRU
+then → hybrid
+```
+
+This is important scientifically.
+
+You need to prove:
+
+> “Our smarter cache is better than ordinary LRU.”
+
+Otherwise there is no reason to keep the extra complexity.
+
+---
+
+# 9. Phase 7 — GPU integration
+
+Only now connect the VRAM side.
+
+The flow becomes:
+
+```text
+request page
+      ↓
+VRAM cache?
+      │
+   ┌──┴──┐
+  YES    NO
+   │      │
+ GPU    RAM?
+          │
+       ┌──┴──┐
+      YES    NO
+       │      │
+       │     SSD
+       │      │
+       │    RAM
+       └──→ VRAM
+```
+
+This is the point where the project becomes a real **paged-MoE runtime**.
+
+---
+
+# 10. Phase 8 — fixed VRAM slots
+
+Do not dynamically allocate arbitrary GPU buffers for every page.
+
+Create a slot pool:
+
+```text
+VRAM Expert Cache
+
+┌─────────┐
+│ Slot 0  │
+├─────────┤
+│ Slot 1  │
+├─────────┤
+│ Slot 2  │
+├─────────┤
+│ Slot 3  │
+├─────────┤
+│ ...     │
+└─────────┘
+```
+
+A page is mapped to a slot.
+
+Example:
+
+```text
+Page E73-P2 → Slot 4
+```
+
+When evicted:
+
+```text
+Slot 4
+ ↓
+Page removed
+ ↓
+Slot 4 reused
+```
+
+This greatly simplifies fragmentation and synchronization.
+
+The current llama.cpp MoE-cache RFCs are exploring similar persistent expert-slot concepts rather than repeatedly reallocating expert buffers. [GitHub](https://github.com/ggml-org/llama.cpp/discussions/28248?utm_source=chatgpt.com)
+
+---
+
+# 11. Phase 9 — keep the resident core separate
+
+This is very important.
+
+Your runtime should know two categories:
+
+```text
+RESIDENT
+PAGEABLE
+```
+
+### Resident
+
+Things like:
+
+```text
+embeddings
+attention
+norms
+router
+output
+runtime buffers
+KV cache
+```
+
+### Pageable
+
+```text
+MoE expert tensors
+```
+
+The exact resident set should be determined by profiling, not assumptions.
+
+This prevents us from accidentally paging something that every token needs.
+
+---
+
+# 12. Phase 10 — asynchronous transfers
+
+Once basic paging works, remove synchronous stalls.
+
+Instead of:
+
+```text
+GPU
+ ↓
+wait for SSD
+ ↓
+wait for RAM
+ ↓
+wait for VRAM
+ ↓
+continue
+```
+
+build:
+
+```text
+GPU computes current work
+        ║
+        ╠══ SSD read future page
+        ╠══ decompress future page
+        ╚══ RAM → VRAM future page
+```
+
+This is where performance starts becoming interesting.
+
+Current llama.cpp experimentation specifically reports gains from explicit MoE prefetching because page-fault-style loading can otherwise become I/O-bound. [GitHub](https://github.com/ggml-org/llama.cpp/discussions/25779?utm_source=chatgpt.com)
+
+---
+
+# 13. Phase 11 — prefetcher
+
+Now add prediction.
+
+Prediction inputs:
+
+```text
+current layer
+current expert
+router output
+recent expert history
+expert frequency
+previous sequence
+```
+
+Output:
+
+```text
+probable future expert pages
+```
+
+Example:
+
+```text
+Current:
+Layer 12 → Expert 7
+
+Prediction:
+Layer 13 → Expert 7
+Layer 13 → Expert 42
+Layer 14 → Expert 7
+```
+
+Start with a simple predictor:
+
+```text
+next-layer routing history
+```
+
+Then improve it.
+
+Don't start with an AI-based predictor. That's unnecessary complexity.
+
+---
+
+# 14. Phase 12 — prefetch confidence
+
+Every prediction gets a score.
+
+```text
+0.95 → prefetch
+0.70 → prefetch if resources available
+0.30 → don't prefetch
+```
+
+And enforce:
+
+```text
+prefetch NEVER blocks execution
+```
+
+If wrong:
+
+```text
+discard prefetched page
+```
+
+Correctness always comes from actual router requests, not prediction.
+
+---
+
+# 15. Phase 13 — adaptive VRAM cache
+
+Now the GPU cache can resize based on what the runtime actually needs.
+
+First determine:
+
+```text
+total VRAM
+-
+resident model
+-
+KV cache
+-
+compute buffers
+-
+safety reserve
+=
+maximum available expert cache
+```
+
+Then dynamically tune within that region.
+
+Do not simply say:
+
+> “3 GB for expert cache.”
+
+That will eventually break under different contexts or workloads.
+
+Current llama.cpp expert-cache discussions explicitly consider reserving space for KV/cache/compute and using the remaining accelerator memory for expert caching. [GitHub](https://github.com/ggml-org/llama.cpp/discussions/28248?utm_source=chatgpt.com)
+
+---
+
+# 16. Phase 14 — adaptive RAM cache
+
+Now implement the same idea for RAM.
+
+Monitor:
+
+```text
+SSD misses
+RAM hits
+GPU waiting
+cache benefit
+system memory pressure
+```
+
+Then:
+
+```text
+SSD miss pressure high
+        ↓
+increase RAM cache
+
+SSD miss pressure low
+        ↓
+decrease RAM cache
+```
+
+Use hysteresis.
+
+For example:
+
+```text
+grow threshold
+shrink threshold
+cooldown period
+```
+
+This prevents:
+
+```text
+grow
+shrink
+grow
+shrink
+```
+
+every few seconds.
+
+---
+
+# 17. Phase 15 — I/O backend experiments
+
+Do not choose the storage method based on theory alone.
+
+Test:
+
+```text
+mmap
+explicit read
+Direct I/O
+async explicit read
+```
+
+Current llama.cpp exposes both mmap and Direct I/O modes, but real-world MoE discussions have found that mmap can outperform Direct I/O for some workloads, so there is no universal answer. [GitHub](https://github.com/ggml-org/llama.cpp/blob/master/tools/completion/README.md?utm_source=chatgpt.com)
+
+Your NVMe, filesystem, kernel and access pattern matter.
+
+Therefore this becomes an experiment:
+
+```text
+backend A
+backend B
+backend C
+
+same model
+same prompt
+same cache
+same workload
+```
+
+Pick the winner.
+
+---
+
+# 18. Phase 16 — compression
+
+Only after raw paging works.
+
+Do not add compression before proving the uncompressed path.
+
+First:
+
+```text
+SSD → RAM → VRAM
+```
+
+Then:
+
+```text
+compressed SSD → decompress → RAM → VRAM
+```
+
+Measure:
+
+```text
+SSD bandwidth saved
++
+CPU decompression cost
++
+end-to-end tok/s
+```
+
+The question isn't:
+
+> Does compression reduce file size?
+
+The actual question is:
+
+> Does compression improve end-to-end inference?
+
+Because Q4_K_M is already quantized.
+
+---
+
+# 19. Phase 17 — observability
+
+Build telemetry into the runtime from the beginning.
+
+For every requested page:
+
+```text
+timestamp
+page ID
+expert
+layer
+source
+destination
+hit/miss
+read latency
+decompression latency
+transfer latency
+prefetch/non-prefetch
+eviction reason
+```
+
+Then produce:
+
+```text
+VRAM hit rate
+RAM hit rate
+SSD miss rate
+prefetch accuracy
+prefetch waste
+SSD bytes/token
+RAM→VRAM bytes/token
+GPU stall %
+average page latency
+P50
+P95
+P99
+tokens/sec
+```
+
+This is crucial.
+
+Without this, you'll know that something is slow but not **why**.
+
+---
+
+# 20. Phase 18 — correctness before performance
+
+Before optimizing speed, prove that:
+
+```text
+baseline output
+=
+paged runtime output
+```
+
+within an acceptable numerical tolerance.
+
+Test:
+
+```text
+same prompt
+same seed
+same model
+same quantization
+```
+
+Compare:
+
+- token sequence where deterministic
+- logits if available
+- perplexity/eval metrics
+- output structure
+
+Then test:
+
+```text
+VRAM cache OFF
+RAM cache OFF
+prefetch OFF
+compression OFF
+```
+
+Each feature should be independently disableable.
+
+This is one of the most important architectural rules.
+
+---
+
+# 21. Phase 19 — ablation testing
+
+The project should have a proper scientific comparison:
+
+```text
+A = normal baseline
+B = SSD paging only
+C = SSD + RAM cache
+D = SSD + RAM + VRAM cache
+E = D + prefetch
+F = E + async I/O
+G = F + adaptive cache
+H = G + compression
+```
+
+Then measure:
+
+```text
+tokens/sec
+SSD bytes/token
+GPU stall
+RAM usage
+VRAM usage
+```
+
+This tells you **which features actually matter**.
+
+---
+
+# 22. Phase 20 — stress testing
+
+After it works on normal prompts:
+
+### Workload 1 — high locality
+
+Same experts repeatedly.
+
+Expected:
+
+```text
+VRAM hit rate ↑↑
+SSD misses ↓↓
+```
+
+### Workload 2 — medium locality
+
+Normal mixed prompts.
+
+### Workload 3 — low locality
+
+Randomized expert demand.
+
+Expected:
+
+```text
+SSD pressure ↑
+prefetch effectiveness ↓
+```
+
+This tells us the limits of the architecture.
+
+---
+
+# 23. Phase 21 — integrate with llama.cpp
+
+I would **not rewrite an inference engine from scratch**.
+
+Use llama.cpp/ggml as the compute foundation and build the paging layer around the expert-loading path.
+
+Current llama.cpp already supports:
+
+- GPU offloading
+- CPU MoE placement
+- lazy tensor loading
+- mmap/direct-I/O modes
+- tensor buffer overrides
+
+and the project is actively experimenting with expert caching/prefetching. [GitHub](https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md?utm_source=chatgpt.com)
+
+There is even a 2026 PoC discussing MoE on-demand disk paging, which is useful as prior art. [GitHub](https://github.com/ggml-org/llama.cpp/discussions/23324?utm_source=chatgpt.com)
+
+So our strategy should be:
+
+```text
+llama.cpp/ggml
+       +
+our pager
+       +
+our cache
+       +
+our prefetcher
+       +
+our telemetry
+```
+
+rather than:
+
+```text
+build another llama.cpp
+```
+
+---
+
+# 24. Repository structure I recommend
+
+Your current repo is:
+
+```text
+.githooks/
+.github/
+docs/
+.gitignore
+README.md
+```
+
+As development progresses:
+
+```text
+.
+├── .github/
+│   └── workflows/
+│
+├── docs/
+│   ├── architecture/
+│   │   ├── overview.md
+│   │   ├── paging.md
+│   │   ├── cache.md
+│   │   ├── prefetch.md
+│   │   └── storage.md
+│   └── benchmarks/
+│
+├── tests/
+│   ├── model_env/
+│   ├── unit/
+│   ├── integration/
+│   └── benchmarks/
+│
+├── src/
+│   ├── model/
+│   ├── pager/
+│   ├── storage/
+│   ├── cache/
+│   │   ├── vram/
+│   │   └── ram/
+│   ├── prefetch/
+│   ├── transfer/
+│   ├── runtime/
+│   └── telemetry/
+│
+├── tools/
+│   ├── model_analyzer/
+│   ├── model_converter/
+│   └── benchmark/
+│
+├── configs/
+│   ├── baseline/
+│   └── runtime/
+│
+└── README.md
+```
+
+---
+
+# 25. Team development plan
+
+Since you're working with a teammate, split it by subsystem instead of having both people touch everything.
+
+### Teammate A — Model environment
+
+Your current assigned task:
+
+```text
+tests/model_env/
+```
+
+Responsible for:
+
+- model setup
+- baseline inference
+- hardware measurements
+- routing statistics
+- benchmark framework
+
+### You — Core runtime architecture
+
+Build:
+
+```text
+src/pager/
+src/cache/
+src/storage/
+```
+
+### Later — teammate
+
+Build:
+
+```text
+src/prefetch/
+src/telemetry/
+```
+
+### Integration
+
+Both of you:
+
+```text
+llama.cpp backend integration
+```
+
+This reduces merge conflicts.
+
+---
+
+# 26. Development order
+
+This is the exact order I would follow:
+
+```text
+1. Baseline environment
+        ↓
+2. Model analyzer
+        ↓
+3. Page-table format
+        ↓
+4. SSD cold-store format
+        ↓
+5. SSD → RAM pager
+        ↓
+6. RAM cache
+        ↓
+7. Correctness tests
+        ↓
+8. VRAM slot cache
+        ↓
+9. RAM → VRAM transfer
+        ↓
+10. Async I/O
+        ↓
+11. Prefetcher
+        ↓
+12. Adaptive cache
+        ↓
+13. Compression
+        ↓
+14. Telemetry
+        ↓
+15. llama.cpp integration
+        ↓
+16. Stress tests
+        ↓
+17. Optimization
+```
+
+**Do not reverse this order.**
+
+---
+
+# 27. Most important architectural rule
+
+Keep every component independently switchable:
+
+```text
+PAGING=ON/OFF
+RAM_CACHE=ON/OFF
+VRAM_CACHE=ON/OFF
+PREFETCH=ON/OFF
+COMPRESSION=ON/OFF
+ASYNC_IO=ON/OFF
+ADAPTIVE_CACHE=ON/OFF
+```
+
+Then you can prove exactly what each subsystem contributes.
+
+---
+
+# 28. What the final runtime should look like
+
+```text
+                         TOKEN
+                           │
+                           ↓
+                       MOE ROUTER
+                           │
+                           ↓
+                     PAGE REQUEST
+                           │
+              ┌────────────┴────────────┐
+              ↓                         ↓
+        VRAM HOT CACHE             PREDICTOR
+              │                         │
+            HIT?                       │
+          ┌───┴───┐                     ↓
+         YES      NO              PREFETCH QUEUE
+          │        │                     │
+          │     RAM CACHE                │
+          │        │                     ↓
+          │      HIT?                  SSD/RAM
+          │        │
+          │      NO
+          │        ↓
+          │       SSD
+          │        ↓
+          │    DECOMPRESS
+          │        ↓
+          └────── RAM
+                   ↓
+               VRAM SLOT
+                   ↓
+                  GPU
+```
+
+That is the system we should actually build.
+
+---
+
+## One strategic decision I'd make now
+
+I would use **Qwen3-30B-A3B-Base** as the research reference model rather than trying to find a model that is literally 7B total. Its official model card gives us a very clean experimental target: **30.5B total, 3.3B active, 128 experts, 8 active/token**. [Hugging Face](https://huggingface.co/Qwen/Qwen3-30B-A3B-Base/blob/main/README.md?code=true\&utm_source=chatgpt.com)
+
+That lets the project demonstrate the real thesis:
+
+> **A 4 GB GPU can potentially execute a much larger MoE model by caching only the working experts rather than fitting the complete expert pool in VRAM.**
+
+And we can keep the architecture model-agnostic so we can test smaller MoE models first.
+
+### The first milestone
+
+Don't start coding the pager yet.
+
+**Finish the model-testing environment and obtain real baseline numbers first.**
+
+Those numbers will determine the actual page size, cache size, I/O method, prefetch depth, and whether the architecture is worth pursuing on your RX 6500M. Current llama.cpp experiments already show that mmap vs explicit I/O and expert prefetch can behave very differently depending on workload, so these choices should be measured rather than assumed. [GitHub](https://github.com/ggml-org/llama.cpp/discussions/25779?utm_source=chatgpt.com)

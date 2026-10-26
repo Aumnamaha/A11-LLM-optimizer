@@ -21,8 +21,25 @@ class DirectSSDMmapManager:
                 self.file_handles.append(f)
                 mm = mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ)
                 self.mmaps[shard_path] = mm
+                self.mmaps[os.path.basename(shard_path)] = mm
             except Exception as e:
                 print(f"[mmap Manager] Error mapping {shard_path}: {e}")
+
+    def get_mmap(self, shard_key: Optional[str] = None) -> Optional[mmap.mmap]:
+        """Retrieve mmap object using full shard path, basename, or default."""
+        if not shard_key:
+            if self.loader.shards and self.loader.shards[0] in self.mmaps:
+                return self.mmaps[self.loader.shards[0]]
+            return None
+        if shard_key in self.mmaps:
+            return self.mmaps[shard_key]
+        base = os.path.basename(shard_key)
+        if base in self.mmaps:
+            return self.mmaps[base]
+        for s in self.loader.shards:
+            if s.endswith(shard_key) or os.path.basename(s) == base:
+                return self.mmaps.get(s)
+        return None
 
     def _get_tensor_metadata(self, tensor_name: str) -> Optional[dict]:
         """Resolve tensor metadata across loader index attributes."""
@@ -47,15 +64,14 @@ class DirectSSDMmapManager:
             return None
 
         # Resolve shard path and file offset from tensor metadata
-        shard_path = meta.get("shard_path") or meta.get("file_path") or self.loader.shards[0]
+        shard_key = meta.get("shard_path") or meta.get("file_path") or meta.get("shard")
         offset = meta.get("offset", 0)
-        size = meta.get("size", max_bytes)
+        size = meta.get("size", meta.get("n_bytes", max_bytes))
 
-        mm = self.mmaps.get(shard_path)
+        mm = self.get_mmap(shard_key)
         if mm:
             try:
-                mm.seek(offset)
-                return mm.read(min(size, max_bytes))
+                return mm[offset : offset + min(size, max_bytes)]
             except Exception:
                 return None
         return None
@@ -64,16 +80,18 @@ class DirectSSDMmapManager:
         return self.fetch_expert_slice_direct(tensor_name, max_bytes)
 
     def close(self):
-        for mm in self.mmaps.values():
+        for mm in set(self.mmaps.values()):
             try:
                 mm.close()
             except Exception:
                 pass
+        self.mmaps.clear()
         for f in self.file_handles:
             try:
                 f.close()
             except Exception:
                 pass
+        self.file_handles.clear()
         print("[mmap Manager] Memory maps closed successfully.")
 
 # Alias for backward compatibility across engine modules

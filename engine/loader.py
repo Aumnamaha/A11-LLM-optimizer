@@ -1,6 +1,6 @@
 import os
 import glob
-from typing import List, Dict
+from typing import Any, Dict, List
 import gguf
 
 class SplitGGUFLoader:
@@ -11,7 +11,7 @@ class SplitGGUFLoader:
     def __init__(self, model_dir: str):
         self.model_dir = model_dir
         self.shards = self._find_shards()
-        self.metadata: Dict[str, str] = {}
+        self.metadata: Dict[str, Any] = {}
         self.tensors: Dict[str, Dict] = {}
         self.ngram_tensors: List[str] = []
         self.expert_tensors: List[str] = []
@@ -41,17 +41,18 @@ class SplitGGUFLoader:
                 # Extract metadata from primary shard
                 if not self.metadata:
                     for key, field in reader.fields.items():
-                        if field.data:
-                            val = field.parts[field.data[0]]
-                            if isinstance(val, (bytes, bytearray)):
-                                self.metadata[key] = val.decode('utf-8', errors='ignore')
-                            elif isinstance(val, list):
-                                try:
-                                    self.metadata[key] = bytes(val).decode('utf-8', errors='ignore')
-                                except Exception:
-                                    self.metadata[key] = str(val)
-                            else:
-                                self.metadata[key] = str(val)
+                        # ReaderField.contents() decodes GGUF strings/arrays/scalars
+                        # to native Python values (raw byte-array handling here
+                        # previously yielded "[113 119 ...]" instead of "qwen3moe").
+                        try:
+                            value = field.contents()
+                        except Exception:
+                            continue
+                        if value is None:
+                            continue
+                        if isinstance(value, (bytes, bytearray)):
+                            value = value.decode("utf-8", errors="ignore")
+                        self.metadata[key] = value
 
                 # Scan tensors in this shard
                 num_tensors = len(reader.tensors)
@@ -64,11 +65,16 @@ class SplitGGUFLoader:
                     if data_offset is None:
                         data_offset = getattr(tensor, 'field', None)
 
+                    n_bytes_val = int(getattr(tensor, 'n_bytes', 0))
                     self.tensors[t_name] = {
                         "shard": shard_name,
+                        "shard_path": shard_path,
+                        "file_path": shard_path,
                         "shape": tensor.shape.tolist(),
                         "type": str(tensor.tensor_type),
-                        "offset": data_offset
+                        "offset": data_offset,
+                        "n_bytes": n_bytes_val,
+                        "size": n_bytes_val,
                     }
                     
                     # Categorize N-Gram vs Expert weights for Qwen architectures
@@ -91,6 +97,6 @@ class SplitGGUFLoader:
         return self.shards[0]
 
 if __name__ == "__main__":
-    target_dir = "/home/aumnamaha/Documents/Local Ai/Qwen 3.8 Flash Next"
+    target_dir = "/home/knk/Projects/A11-LLM-optimizer/models/Qwen3-30B-A3B"
     if os.path.exists(target_dir):
         loader = SplitGGUFLoader(target_dir)

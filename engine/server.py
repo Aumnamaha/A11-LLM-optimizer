@@ -7,13 +7,12 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
 
-from fastapi import FastAPI, HTTPException
+from contextlib import asynccontextmanager
+from typing import List, Optional
+from fastapi import FastAPI, HTTPException, Response
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
-from typing import List, Optional
 from engine.pipeline import A11Pipeline
-
-app = FastAPI(title="A11-LLM-Optimizer Local Inference Server")
 
 pipeline_instance: Optional[A11Pipeline] = None
 
@@ -28,19 +27,41 @@ class ChatCompletionRequest(BaseModel):
     max_tokens: Optional[int] = 512
     stream: Optional[bool] = False
 
-@app.on_event("startup")
-def startup_event():
+@asynccontextmanager
+async def lifespan(app: FastAPI):
     global pipeline_instance
-    model_dir = "/home/aumnamaha/Documents/Local Ai/Qwen 3.8 Flash Next"
-    print("\n[Server Boot] Initializing A11 Engine Pipeline...")
-    pipeline_instance = A11Pipeline(model_dir, vram_budget_gb=4.0, ram_budget_gb=16.0)
-
-@app.on_event("shutdown")
-def shutdown_event():
-    global pipeline_instance
+    model_dir = "/home/knk/Projects/A11-LLM-optimizer/models/Qwen3-30B-A3B"
+    print("\n[Server Boot] Initializing A11 Engine Pipeline with dynamic hardware profiling...")
+    pipeline_instance = A11Pipeline(model_dir)
+    yield
     if pipeline_instance:
         print("\n[Server Shutdown] Cleaning up engine pipeline resources...")
         pipeline_instance.shutdown()
+
+app = FastAPI(title="A11-LLM-Optimizer Local Inference Server", lifespan=lifespan)
+
+@app.get("/")
+def root():
+    hw = pipeline_instance.hardware_profile.to_dict() if pipeline_instance and hasattr(pipeline_instance, "hardware_profile") else None
+    compat = pipeline_instance.compatibility_report.to_dict() if pipeline_instance and hasattr(pipeline_instance, "compatibility_report") else None
+    return {
+        "service": "A11-LLM-Optimizer Local Inference Server",
+        "status": "ready" if pipeline_instance else "initializing",
+        "hardware": hw,
+        "compatibility": compat,
+        "endpoints": ["/v1/models", "/v1/chat/completions", "/health"]
+    }
+
+@app.get("/health")
+def health_check():
+    return {
+        "status": "healthy",
+        "engine_active": pipeline_instance is not None,
+    }
+
+@app.get("/favicon.ico", include_in_schema=False)
+def favicon():
+    return Response(status_code=204)
 
 @app.get("/v1/models")
 def list_models():

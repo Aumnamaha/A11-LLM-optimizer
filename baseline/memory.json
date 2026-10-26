@@ -1,0 +1,42 @@
+{
+  "cpu_mmap": {
+    "peak_vram_bytes": {
+      "card1": 612556800,
+      "card2": 508297216
+    },
+    "peak_rss_bytes": 11852382208,
+    "ssd_read_bytes": 56198844416,
+    "samples": 239
+  },
+  "cpu_dio": {
+    "peak_vram_bytes": {
+      "card1": 336179200,
+      "card2": 531443712
+    },
+    "peak_rss_bytes": 147591168,
+    "ssd_read_bytes": 23126609920,
+    "samples": 185
+  },
+  "vulkan_attn_cpu_moe": {
+    "peak_vram_bytes": {
+      "card1": 1034981376,
+      "card2": 471478272
+    },
+    "peak_rss_bytes": 12428001280,
+    "min_available_bytes": 10648952832,
+    "guard_tripped": false,
+    "ssd_read_bytes": 47548977152,
+    "samples": 194
+  },
+  "vulkan_attn_cpu_moe_dio": {
+    "peak_vram_bytes": {
+      "card1": 839299072,
+      "card2": 495112192
+    },
+    "peak_rss_bytes": 115007488,
+    "min_available_bytes": 893120512,
+    "guard_tripped": true,
+    "ssd_read_bytes": 326377472,
+    "samples": 40
+  }
+}

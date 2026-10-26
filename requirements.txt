@@ -1,0 +1,13 @@
+# Core runtime dependencies for A11-LLM-Optimizer.
+#
+# NOTE: PyPI's default `torch` wheel bundles CUDA and is very large.
+# For a CPU-only / CI install, install torch first from the CPU index:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+#
+torch>=2.2
+gguf>=0.10
+numpy>=1.24
+transformers>=4.40
+fastapi>=0.110
+uvicorn>=0.29
+pydantic>=2.0

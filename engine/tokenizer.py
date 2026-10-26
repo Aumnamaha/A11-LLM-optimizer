@@ -1,6 +1,10 @@
 import os
 from typing import List
-from transformers import AutoTokenizer
+
+try:
+    from transformers import AutoTokenizer
+except ImportError:
+    AutoTokenizer = None
 
 class QwenTokenizerManager:
     """
@@ -15,6 +19,9 @@ class QwenTokenizerManager:
 
     def _initialize_tokenizer(self):
         print(f"\n[Tokenizer Manager] Loading Qwen Tokenizer Vocabulary...")
+        if AutoTokenizer is None:
+            print("  [Warning] transformers is not installed; using byte fallback tokenizer.")
+            return
         os.makedirs(self.cache_dir, exist_ok=True)
         
         try:
@@ -49,7 +56,7 @@ class QwenTokenizerManager:
         return "".join([chr(tid) if tid < 256 else "?" for tid in token_ids])
 
 if __name__ == "__main__":
-    target_dir = "/home/aumnamaha/Documents/Local Ai/Qwen 3.8 Flash Next"
+    target_dir = "/home/knk/Projects/A11-LLM-optimizer/models/Qwen3-30B-A3B"
     tok_mgr = QwenTokenizerManager(target_dir)
     
     sample_text = "What caused World War 2?"

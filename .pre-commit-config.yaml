@@ -1,0 +1,57 @@
+# Pre-commit / pre-push hooks for A11-LLM-Optimizer.
+#
+# Install once (cross-platform):
+#   python scripts/setup_hooks.py
+# or directly:
+#   pre-commit install --hook-type pre-commit --hook-type pre-push --install-hooks
+#
+# Run manually against everything:
+#   pre-commit run --all-files
+#   pre-commit run --hook-stage pre-push --all-files
+
+default_install_hook_types:
+  - pre-commit
+  - pre-push
+
+# Never run hooks over generated/compiled/model artifacts.
+exclude: |
+  (?x)(
+    ^build/|
+    ^models/|
+    ^\.venv/|
+    \.(so|pyd|dll|dylib)$
+  )
+
+repos:
+  # --- Generic hygiene -----------------------------------------------------
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-toml
+      - id: check-added-large-files
+        args: [--maxkb=2048]
+      - id: check-merge-conflict
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: detect-private-key
+
+  # --- Python linting ------------------------------------------------------
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.16.10
+    hooks:
+      - id: ruff-check
+        args: [--select, "E9,F63,F7,F82"]
+
+  # --- Pre-push gate (only runs on `git push`) -----------------------------
+  - repo: local
+    hooks:
+      - id: pre-push-checks
+        name: pre-push lint & tests
+        entry: python scripts/pre_push.py
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [pre-push]

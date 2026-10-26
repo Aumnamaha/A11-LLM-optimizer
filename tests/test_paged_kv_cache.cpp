@@ -115,9 +115,10 @@ TEST_CASE("PagedKVCacheManager multi-sequence fragmentation", "[paged-kv][cache]
 
 TEST_CASE("PagedKVCacheManager VRAM usage reporting", "[paged-kv][cache]") {
     PagedKVCacheManager::Config cfg;
-    cfg.num_layers = 2;
-    cfg.head_dim   = 32;
-    cfg.max_sequences = 8;
+    cfg.num_layers     = 2;
+    cfg.head_dim       = 32;
+    cfg.max_sequences  = 8;
+    cfg.vram_cap_gb    = 1; // Small cap to avoid OOM in CI/test runs
 
     PagedKVCacheManager mgr(cfg);
     REQUIRE(mgr.vram_usage_bytes() == 0);

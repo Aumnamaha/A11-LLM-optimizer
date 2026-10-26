@@ -10,8 +10,11 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 # ---- Library target: a11_optimizer_lib ----
 add_library(a11_optimizer_lib STATIC
     src/memory/nvme_loader.cpp
+    src/memory/hot_expert_cache.cpp
     src/cuda/paged_kv_cache.cu
     src/cuda/fp8_gemv.cu
+    src/cuda/tree_verification.cu
+    src/engine/speculative_verifier.cpp
 )
 
 target_include_directories(a11_optimizer_lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
@@ -29,6 +32,7 @@ set_target_properties(a11_optimizer_lib PROPERTIES
 add_executable(a11_tests
     tests/test_nvme_loader.cpp
     tests/test_paged_kv_cache.cpp
+    tests/test_speculative_verifier.cpp
 )
 
 target_link_libraries(a11_tests PRIVATE a11_optimizer_lib)

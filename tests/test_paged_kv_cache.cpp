@@ -4,9 +4,10 @@
 
 TEST_CASE("PagedKVCacheManager basic allocation and block table", "[paged-kv][cache]") {
     PagedKVCacheManager::Config cfg;
-    cfg.num_layers = 8;
-    cfg.head_dim   = 64;
-    cfg.max_sequences = 16;
+    cfg.num_layers     = 8;
+    cfg.head_dim       = 64;
+    cfg.max_sequences  = 16;
+    cfg.vram_cap_gb    = 1; // Cap VRAM pool to <2GB for RTX 5070 Ti test budget
 
     PagedKVCacheManager mgr(cfg);
 
@@ -39,9 +40,10 @@ TEST_CASE("PagedKVCacheManager basic allocation and block table", "[paged-kv][ca
 
 TEST_CASE("PagedKVCacheManager free and reallocate", "[paged-kv][cache]") {
     PagedKVCacheManager::Config cfg;
-    cfg.num_layers = 4;
-    cfg.head_dim   = 32;
-    cfg.max_sequences = 8;
+    cfg.num_layers     = 4;
+    cfg.head_dim       = 32;
+    cfg.max_sequences  = 8;
+    cfg.vram_cap_gb    = 1; // Cap VRAM pool to <2GB for RTX 5070 Ti test budget
 
     PagedKVCacheManager mgr(cfg);
 
@@ -85,9 +87,10 @@ TEST_CASE("PagedKVCacheManager VRAM cap enforcement", "[paged-kv][cache]") {
 
 TEST_CASE("PagedKVCacheManager multi-sequence fragmentation", "[paged-kv][cache]") {
     PagedKVCacheManager::Config cfg;
-    cfg.num_layers = 4;
-    cfg.head_dim   = 64;
-    cfg.max_sequences = 16;
+    cfg.num_layers     = 4;
+    cfg.head_dim       = 64;
+    cfg.max_sequences  = 16;
+    cfg.vram_cap_gb    = 1; // Cap VRAM pool to <2GB for RTX 5070 Ti test budget
 
     PagedKVCacheManager mgr(cfg);
 

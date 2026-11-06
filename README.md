@@ -1,6 +1,15 @@
-# A11-LLM-Optimizer: Ultra-Low Hardware MoE & N-Gram Offloading Architecture
+# ⚡ A11-LLM-Optimizer — Ultra-Low Hardware MoE & N-Gram Offloading
 
-> **Run 100B+ MoE Models (like Qwen3.8-Flash-Next) directly from NVMe SSD on Consumer Hardware (12GB VRAM & 12GB/32GB System RAM)**
+> **Run 100B+ MoE Models directly from NVMe SSD on consumer hardware (12GB VRAM) with C++/CUDA kernels achieving 63–86 tok/s.**
+
+[![C++](https://img.shields.io/badge/C%2B%2B-20-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)](https://isocpp.org/)
+[![CUDA](https://img.shields.io/badge/CUDA-13.x-76B900?style=for-the-badge&logo=nvidia&logoColor=white)](https://developer.nvidia.com/cuda)
+[![Python](https://img.shields.io/badge/Python-3.12%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+
+---
+
+## 📋 Executive Summary
 
 `A11-LLM-Optimizer` is a custom high-performance C++/Python LLM inference engine engineered to stream massive Mixture-of-Experts (MoE) and lookup-augmented models directly from NVMe storage. By avoiding full model weight loading into system RAM, this framework prevents OS memory thrashing/swapping and enables smooth 70+ tok/s inference on consumer hardware.
 
